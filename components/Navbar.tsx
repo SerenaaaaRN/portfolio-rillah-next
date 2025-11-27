@@ -1,9 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Home, User, Briefcase, Code2, Mail, Layout } from "lucide-react";
+import {
+  Home,
+  User,
+  Briefcase,
+  Code2,
+  Mail,
+  Layout,
+  Menu,
+  X,
+} from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = React.useMemo(
     () => [
@@ -23,6 +33,7 @@ export const Navbar: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false); // Close menu on selection
   };
 
   // Update active section on scroll
@@ -46,33 +57,55 @@ export const Navbar: React.FC = () => {
     return () => observer.disconnect();
   }, [navItems]);
 
+  const renderNavItems = (isMobile: boolean) =>
+    navItems.map((item) => {
+      const isActive = activeSection === item.id;
+      const Icon = item.icon;
+      return (
+        <button
+          key={item.id}
+          onClick={() => handleScroll(item.id)}
+          className={`
+            flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap
+            ${isMobile ? "w-full text-left" : ""}
+            ${
+              isActive
+                ? "bg-slate-900 text-white shadow-md"
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+            }
+          `}
+        >
+          <Icon
+            size={16}
+            className={isActive ? "text-white" : "text-slate-500"}
+          />
+          <span>{item.label}</span>
+        </button>
+      );
+    });
+
   return (
-    <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-fit px-4">
-      <nav className="bg-white/90 backdrop-blur-md shadow-soft border border-slate-200/60 rounded-full px-2 py-1.5 flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[95vw]">
-        {navItems.map((item) => {
-          const isActive = activeSection === item.id;
-          const Icon = item.icon;
-          return (
-            <button
-              key={item.id}
-              onClick={() => handleScroll(item.id)}
-              className={`
-                flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap
-                ${
-                  isActive
-                    ? "bg-slate-900 text-white shadow-md"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                }
-              `}
-            >
-              <Icon
-                size={16}
-                className={isActive ? "text-white" : "text-slate-500"}
-              />
-              <span>{item.label}</span>
-            </button>
-          );
-        })}
+    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm sm:max-w-md md:max-w-fit px-4">
+      {/* Mobile & Tablet Menu Button */}
+      <div className="md:hidden flex justify-end w-full">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="p-2 bg-white/90 backdrop-blur-md shadow-soft border border-slate-200/60 rounded-full"
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <nav className="md:hidden mt-2 bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/60 rounded-xl p-2 flex flex-col items-start gap-1">
+          {renderNavItems(true)}
+        </nav>
+      )}
+
+      {/* Desktop Menu */}
+      <nav className="hidden md:flex bg-white/90 backdrop-blur-md shadow-soft border border-slate-200/60 rounded-full px-2 py-1.5 items-center gap-1">
+        {renderNavItems(false)}
       </nav>
     </div>
   );

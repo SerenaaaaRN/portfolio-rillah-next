@@ -20,7 +20,7 @@ export const Experience: React.FC = () => {
       </div>
 
       <div className="flex justify-center mb-10">
-        <div className="inline-flex bg-slate-100 p-1.5 rounded-full relative">
+        <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
           <button
             onClick={() => setActiveTab("education")}
             className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
