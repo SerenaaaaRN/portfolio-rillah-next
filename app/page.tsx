@@ -6,9 +6,35 @@ import { Experience } from "@/components/Experience";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
+import { Guestbook } from "@/components/Guestbook";
 import { Footer } from "@/components/Footer";
+import { supabase } from "@/lib/supabase";
+import { revalidatePath } from "next/cache";
 
-const App: React.FC = () => {
+async function addReview(formData: FormData) {
+  "use server";
+  const name = formData.get("name") as string;
+  const message = formData.get("message") as string;
+
+  if (!name.trim() || !message.trim()) {
+    // This case should be handled client-side, but as a fallback
+    return;
+  }
+
+  await supabase.from("reviews").insert([{ name, message }]);
+  revalidatePath("/");
+}
+
+const App: React.FC = async () => {
+  const { data: reviews, error } = await supabase
+    .from("reviews")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching reviews:", error);
+  }
+
   return (
     <div className="min-h-screen font-sans text-slate-900 selection:bg-slate-900 selection:text-white relative bg-linear-to-br from-white-200 via-gray-50 to-slate-200 overflow-hidden">
       <Navbar />
@@ -31,6 +57,7 @@ const App: React.FC = () => {
         <Skills />
         <Projects />
         <Contact />
+        <Guestbook initialReviews={reviews || []} addReviewAction={addReview} />
       </main>
 
       <Footer />
