@@ -25,9 +25,7 @@ export const Footer: React.FC = () => {
           >
             Projects
           </a>
-          <a href="#contact" className="hover:text-slate-900 transition-colors">
-            Contact
-          </a>
+
         </div>
 
         <div className="text-xs text-slate-400">

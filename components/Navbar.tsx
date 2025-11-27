@@ -9,6 +9,7 @@ import {
   Layout,
   Menu,
   X,
+  MessageSquare,
 } from "lucide-react";
 
 export const Navbar: React.FC = () => {
@@ -22,7 +23,7 @@ export const Navbar: React.FC = () => {
       { id: "myjourney", label: "My Journey", icon: GraduationCap },
       { id: "skills", label: "Skills", icon: Code2 },
       { id: "projects", label: "Projects", icon: Layout },
-      { id: "contact", label: "Contact", icon: Mail },
+      { id: "guestbook", label: "Guestbook", icon: MessageSquare },
     ],
     []
   );

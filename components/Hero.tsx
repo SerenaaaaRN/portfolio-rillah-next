@@ -102,7 +102,7 @@ export const Hero: React.FC = () => {
               >
                 View Projects <ArrowRight size={18} className="ml-2" />
               </Button>
-              <a href="#contact">
+              <a href="mailto:your-email@example.com">
                 <Button
                   variant="outline"
                   size="lg"

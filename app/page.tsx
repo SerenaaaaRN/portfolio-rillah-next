@@ -5,7 +5,7 @@ import { About } from "@/components/About";
 import { MyJourney } from "@/components/MyJourney";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
-import { Contact } from "@/components/Contact";
+
 import { Guestbook } from "@/components/Guestbook";
 import { Footer } from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
@@ -56,7 +56,7 @@ const App = async () => {
         <MyJourney />
         <Skills />
         <Projects />
-        <Contact />
+        
         <Guestbook
           initialReviews={reviews || []}
           addReview={addReview}
