@@ -36,8 +36,9 @@ function SubmitButton() {
 // Guestbook Component
 export const Guestbook: React.FC<{
   initialReviews: Review[];
-  addReviewAction: (formData: FormData) => Promise<void>;
-}> = ({ initialReviews, addReviewAction }) => {
+  addReview: (formData: FormData) => Promise<void>;
+  error?: Error | null;
+}> = ({ initialReviews, addReview, error }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
@@ -55,7 +56,7 @@ export const Guestbook: React.FC<{
             <form
               ref={formRef}
               action={async (formData) => {
-                await addReviewAction(formData);
+                await addReview(formData);
                 formRef.current?.reset();
               }}
               className="flex flex-col gap-4"
@@ -99,7 +100,12 @@ export const Guestbook: React.FC<{
             <h3 className="text-2xl font-bold text-slate-900 text-center col-span-full">
               Recent Reviews
             </h3>
-            {initialReviews.map((review, index) => (
+            {error ? (
+              <p className="text-red-500 text-center col-span-full">
+                Error loading reviews. Please try again later.
+              </p>
+            ) : (
+              initialReviews.map((review, index) => (
               <Animation type="slideUp" delay={index * 100} key={review.id}>
                 <Card className="p-6">
                   <div className="flex items-start">
@@ -118,7 +124,7 @@ export const Guestbook: React.FC<{
                   </div>
                 </Card>
               </Animation>
-            ))}
+            )))}
           </div>
         </div>
       </Animation>

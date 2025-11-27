@@ -14,7 +14,7 @@ export const Skills: React.FC = () => {
     'Tools & Cloud'
   ];
 
-  const skillsData: Record<string, Array<{ name: string; level: number; icon: any }>> = {
+  const skillsData: Record<string, Array<{ name: string; level: number; icon: React.ElementType }>> = {
     'Languages': [
       { name: 'Python', level: 70, icon: Terminal },
       { name: 'Java', level: 75, icon: Terminal },

@@ -1,7 +1,7 @@
 "use client";
 import Animation from "./ui/Animation";
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Download, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
 
@@ -102,17 +102,19 @@ export const Hero: React.FC = () => {
               >
                 View Projects <ArrowRight size={18} className="ml-2" />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto group bg-white/80 backdrop-blur-sm"
-              >
-                Let&apos;s Connect{" "}
-                <Download
-                  size={18}
-                  className="ml-2 group-hover:translate-y-0.5 transition-transform"
-                />
-              </Button>
+              <a href="#contact">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto group bg-white/80 backdrop-blur-sm"
+                >
+                  Let&apos;s Connect{" "}
+                  <Mail
+                    size={18}
+                    className="ml-2 group-hover:translate-y-0.5 transition-transform"
+                  />
+                </Button>
+              </a>
             </div>
 
             <div className="flex items-center gap-6 justify-center lg:justify-start pt-4 text-slate-500">

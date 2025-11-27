@@ -24,7 +24,7 @@ export const About: React.FC = () => {
               alt="Working"
               width={500}
               height={500}
-              className="w-full h-auto object-cover..."
+              className="w-full h-auto object-cover"
             />
           </div>
         </Animation>
@@ -107,7 +107,7 @@ const InfoCard = ({
   label,
   value,
 }: {
-  icon: any;
+  icon: React.ElementType;
   label: string;
   value: string;
 }) => (

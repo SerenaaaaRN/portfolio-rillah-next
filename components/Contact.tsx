@@ -58,7 +58,7 @@ export const Contact: React.FC = () => {
 
 interface ContactCardProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: any;
+  icon: React.ElementType;
   title: string;
   value: string;
   action?: string;

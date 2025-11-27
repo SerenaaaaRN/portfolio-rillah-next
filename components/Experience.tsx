@@ -76,6 +76,7 @@ export const Experience: React.FC = () => {
         ) : (
           <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-slate-200 before:to-transparent">
             <TimelineItem
+              icon={GraduationCap}
               role="S1 Teknik Informatika"
               org="Universitas Sriwijaya"
               date="2025 - Sekarang"
@@ -88,6 +89,7 @@ export const Experience: React.FC = () => {
               ]}
             />
             <TimelineItem
+              icon={GraduationCap}
               role="MAN 1 Palembang"
               org=""
               date="2020 - 2023"
@@ -102,11 +104,29 @@ export const Experience: React.FC = () => {
   );
 };
 
-const TimelineItem = ({ role, org, date, location, desc, tags }: any) => (
+interface TimelineItemProps {
+  role: string;
+  org: string;
+  date: string;
+  location: string;
+  desc: string;
+  tags: string[];
+  icon: React.ElementType;
+}
+
+const TimelineItem = ({
+  role,
+  org,
+  date,
+  location,
+  desc,
+  tags,
+  icon: Icon,
+}: TimelineItemProps) => (
   <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
     {/* Icon Dot */}
     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 group-hover:bg-slate-900 group-hover:text-white text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors duration-300">
-      <Briefcase size={18} />
+      <Icon size={18} />
     </div>
 
     {/* Content Card */}

@@ -25,7 +25,7 @@ async function addReview(formData: FormData) {
   revalidatePath("/");
 }
 
-const App: React.FC = async () => {
+const App = async () => {
   const { data: reviews, error } = await supabase
     .from("reviews")
     .select("*")
@@ -57,7 +57,11 @@ const App: React.FC = async () => {
         <Skills />
         <Projects />
         <Contact />
-        <Guestbook initialReviews={reviews || []} addReviewAction={addReview} />
+        <Guestbook
+          initialReviews={reviews || []}
+          addReview={addReview}
+          error={error}
+        />
       </main>
 
       <Footer />

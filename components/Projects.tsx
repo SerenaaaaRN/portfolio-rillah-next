@@ -51,7 +51,7 @@ export const Projects: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, idx) => (
-          <Animation type="slideUp" delay={idx * 100} key={idx}>
+          <Animation type="slideUp" delay={idx * 100} key={project.title}>
             <div className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="relative h-48 overflow-hidden">
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors z-10" />

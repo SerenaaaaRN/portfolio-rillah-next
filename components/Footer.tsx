@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
         <div className="text-center md:text-left">
           <h3 className="font-bold text-slate-900 text-lg">Rillah</h3>
           <p className="text-slate-500 text-sm mt-1">
-            Built with React & Tailwind CSS (Learning in Progress)
+            Still Learning
           </p>
         </div>
 
