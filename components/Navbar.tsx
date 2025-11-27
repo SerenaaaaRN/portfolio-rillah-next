@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import {
   Home,
   User,
-  Briefcase,
+  GraduationCap,
   Code2,
   Mail,
   Layout,
@@ -19,7 +19,7 @@ export const Navbar: React.FC = () => {
     () => [
       { id: "home", label: "Home", icon: Home },
       { id: "about", label: "About", icon: User },
-      { id: "experience", label: "Experience", icon: Briefcase },
+      { id: "myjourney", label: "My Journey", icon: GraduationCap },
       { id: "skills", label: "Skills", icon: Code2 },
       { id: "projects", label: "Projects", icon: Layout },
       { id: "contact", label: "Contact", icon: Mail },

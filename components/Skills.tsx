@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   Code,
   Award,
@@ -11,6 +12,7 @@ import {
   Table2,
   BookOpen,
   GitBranch,
+  X,
 } from "lucide-react";
 import Animation from "./ui/Animation";
 import { SectionTitle } from "./ui/Primitives";
@@ -19,6 +21,20 @@ type TabType = "tech" | "certs";
 
 export const Skills: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("tech");
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (imageUrl: string) => {
+    if (imageUrl) {
+      setSelectedCert(imageUrl);
+      setIsModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCert(null);
+  };
 
   const skills = [
     { name: "Python", level: 70, icon: Terminal },
@@ -30,6 +46,24 @@ export const Skills: React.FC = () => {
     { name: "Pandas", level: 30, icon: Table2 },
     { name: "GitHub", level: 50, icon: GitBranch },
     { name: "Notion", level: 85, icon: BookOpen },
+  ];
+
+  const certificates = [
+    {
+      title: "Pelatihan Pemrograman",
+      issuer: "Duhairillah",
+      imageUrl: "/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
+    },
+    {
+      title: "Soon",
+      issuer: "",
+      imageUrl: "", // Placeholder
+    },
+    {
+      title: "Soon",
+      issuer: "",
+      imageUrl: "", // Placeholder
+    },
   ];
 
   return (
@@ -80,13 +114,23 @@ export const Skills: React.FC = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <CertificateCard key={i} />
+              {certificates.map((cert, i) => (
+                <CertificateCard
+                  key={i}
+                  title={cert.title}
+                  issuer={cert.issuer}
+                  imageUrl={cert.imageUrl}
+                  onCardClick={() => openModal(cert.imageUrl)}
+                />
               ))}
             </div>
           )}
         </div>
       </Animation>
+
+      {isModalOpen && selectedCert && (
+        <CertificateModal imageUrl={selectedCert} onClose={closeModal} />
+      )}
     </section>
   );
 };
@@ -119,12 +163,69 @@ const SkillCard = ({ name, level, icon: Icon }: SkillCardProps) => (
   </div>
 );
 
-const CertificateCard = () => (
-  <div className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] flex items-center justify-center">
-    <div className="text-center text-slate-400">
-      <Award size={40} className="mx-auto mb-2" />
-      <p className="font-medium">Certificate</p>
-      <p className="text-xs">Placeholder</p>
+interface CertificateCardProps {
+  title: string;
+  issuer: string;
+  imageUrl: string;
+  onCardClick: () => void;
+}
+
+const CertificateCard = ({ title, issuer, imageUrl, onCardClick }: CertificateCardProps) => (
+  <div
+    className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group overflow-hidden cursor-pointer"
+    onClick={onCardClick}
+  >
+    <div className="aspect-[4/3] relative">
+      {imageUrl ? (
+        <Image
+          src={imageUrl}
+          alt="Certificate"
+          layout="fill"
+          objectFit="contain"
+        />
+      ) : (
+        <div className="w-full h-full bg-slate-50 flex items-center justify-center">
+          <div className="text-center text-slate-400">
+            <Award size={40} className="mx-auto mb-2" />
+            <p className="font-medium">Certificate</p>
+            <p className="text-xs">Placeholder</p>
+          </div>
+        </div>
+      )}
+    </div>
+    <div className="p-4">
+      <h3 className="font-bold text-slate-800">{title}</h3>
+      <p className="text-sm text-slate-500">{issuer}</p>
+    </div>
+  </div>
+);
+
+interface CertificateModalProps {
+  imageUrl: string;
+  onClose: () => void;
+}
+
+const CertificateModal = ({ imageUrl, onClose }: CertificateModalProps) => (
+  <div
+    className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+    onClick={onClose}
+  >
+    <button
+      className="absolute top-4 right-4 text-white hover:text-slate-300 transition-colors"
+      onClick={onClose}
+    >
+      <X size={32} />
+    </button>
+    <div
+      className="relative w-full max-w-4xl h-full max-h-[80vh]"
+      onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
+    >
+      <Image
+        src={imageUrl}
+        alt="Certificate"
+        layout="fill"
+        objectFit="contain"
+      />
     </div>
   </div>
 );

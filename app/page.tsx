@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Experience } from "@/components/Experience";
+import { MyJourney } from "@/components/MyJourney";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
@@ -53,7 +53,7 @@ const App = async () => {
       <main className="max-w-6xl mx-auto px-6 sm:px-8 space-y-24 md:space-y-32 pb-20 relative z-10">
         <Hero />
         <About />
-        <Experience />
+        <MyJourney />
         <Skills />
         <Projects />
         <Contact />
