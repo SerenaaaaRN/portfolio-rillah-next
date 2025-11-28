@@ -1,23 +1,22 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
-import { SectionTitle} from "./ui/Primitives";
+import { SectionTitle } from "./ui/Primitives";
 import { MapPin, GraduationCap, Mail, User } from "lucide-react";
-import Animation from "./ui/Animation";
 import Image from "next/image";
+import { AOSProps } from "./ui/AOSProps";
 
-export const About: React.FC = () => {
+export const About: React.FC<AOSProps> = ({ ...aosProps }) => {
   return (
-    <section id="about" className="scroll-mt-32">
-      <Animation type="fadeIn">
+    <section id="about" className="scroll-mt-32" {...aosProps}>
         <SectionTitle
           title="About Me"
           subtitle="Passionate about creating innovative solutions through data and algorithms"
+          data-aos="fade-up"
+          data-aos-delay="100"
         />
-      </Animation>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <Animation type="fadeIn" className="lg:col-span-5 mt-5">
+        <div className="lg:col-span-5 mt-5" data-aos="fade-right" data-aos-delay="200">
           <div className="relative overflow-hidden rounded-2xl shadow-soft">
             <Image
               src="/nancymomoland2.jpg"
@@ -27,12 +26,12 @@ export const About: React.FC = () => {
               className="w-full h-auto object-cover"
             />
           </div>
-        </Animation>
+        </div>
 
-        <Animation
-          type="fadeIn"
-          delay={200}
+        <div
           className="lg:col-span-7 space-y-8 mt-5"
+          data-aos="fade-left"
+          data-aos-delay="300"
         >
           <div className="prose prose-slate max-w-none text-slate-600">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
@@ -96,7 +95,7 @@ export const About: React.FC = () => {
               </div>
             </div>
           </div>
-        </Animation>
+        </div>
       </div>
     </section>
   );

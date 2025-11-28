@@ -1,25 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import {
-  Code,
-  Award,
-  Cpu,
-  Terminal,
-  Smartphone,
-  Braces,
-  Sigma,
-  Table2,
-  BookOpen,
-  GitBranch,
-  X,
-} from "lucide-react";
-import Animation from "./ui/Animation";
+import {Code, Award, Cpu, Terminal, Smartphone, Braces, Sigma, Table2, BookOpen, GitBranch, X,} from "lucide-react";
 import { SectionTitle } from "./ui/Primitives";
+import { AOSProps } from "./ui/AOSProps";
 
 type TabType = "tech" | "certs";
 
-export const Skills: React.FC = () => {
+export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
   const [activeTab, setActiveTab] = useState<TabType>("tech");
   const [selectedCert, setSelectedCert] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,13 +55,15 @@ export const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="scroll-mt-32">
+    <section id="skills" className="scroll-mt-32" {...aosProps}>
       <SectionTitle
         title="Skills & Certificates"
         subtitle="A showcase of my technical skills and professional certifications"
+        data-aos="fade-up"
+        data-aos-delay="100"
       />
 
-      <div className="flex justify-center mb-10">
+      <div className="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="200">
         <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
           <button
             onClick={() => setActiveTab("tech")}
@@ -99,8 +89,7 @@ export const Skills: React.FC = () => {
         </div>
       </div>
 
-      <Animation type="slideUp">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
           {activeTab === "tech" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
               {skills.map((skill) => (
@@ -126,7 +115,6 @@ export const Skills: React.FC = () => {
             </div>
           )}
         </div>
-      </Animation>
 
       {isModalOpen && selectedCert && (
         <CertificateModal imageUrl={selectedCert} onClose={closeModal} />

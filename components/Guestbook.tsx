@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { SectionTitle, Button, Card } from "./ui/Primitives";
 import { useFormStatus } from "react-dom";
 import { Send, LoaderCircle } from "lucide-react";
-import Animation from "./ui/Animation";
+import { AOSProps } from "./ui/AOSProps";
 
 // Define the shape of a review
 interface Review {
@@ -12,6 +12,7 @@ interface Review {
   name: string;
   message: string;
 }
+
 
 // Submit Button Component
 function SubmitButton() {
@@ -38,20 +39,19 @@ export const Guestbook: React.FC<{
   initialReviews: Review[];
   addReview: (formData: FormData) => Promise<void>;
   error?: Error | null;
-}> = ({ initialReviews, addReview, error }) => {
+} & AOSProps> = ({ initialReviews, addReview, error, ...aosProps }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
-    <section id="guestbook" className="scroll-mt-32">
-      <Animation type="fadeIn">
+    <section id="guestbook" className="scroll-mt-32" {...aosProps}>
         <SectionTitle
           title="Guestbook"
           subtitle="Leave a message or a review of my portfolio"
+          data-aos="fade-up"
+          data-aos-delay="100"
         />
-      </Animation>
 
-      <Animation type="slideUp" delay={200}>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
           <Card className="p-8">
             <form
               ref={formRef}
@@ -63,7 +63,10 @@ export const Guestbook: React.FC<{
             >
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-slate-700 mb-1"
+                  >
                     Name
                   </label>
                   <input
@@ -77,8 +80,11 @@ export const Guestbook: React.FC<{
                 </div>
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
-                    Message
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-slate-700 mb-1"
+                >
+                  Message
                 </label>
                 <textarea
                   id="message"
@@ -106,28 +112,28 @@ export const Guestbook: React.FC<{
               </p>
             ) : (
               initialReviews.map((review, index) => (
-              <Animation type="slideUp" delay={index * 100} key={review.id}>
-                <Card className="p-6">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-bold text-slate-500">
-                        {review.name.charAt(0).toUpperCase()}
-                      </span>
+                  <Card className="p-6" key={review.id} data-aos="fade-up" data-aos-delay={300 + index * 50}>
+                    <div className="flex items-start">
+                      <div className="shrink-0 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
+                        <span className="text-lg font-bold text-slate-500">
+                          {review.name.charAt(0).toUpperCase()}
+                        </span>
+                      </div>
+                      <div className="ml-4">
+                        <p className="font-bold text-slate-800">
+                          {review.name}
+                        </p>
+                        <p className="text-slate-600 mt-1">{review.message}</p>
+                        <p className="text-xs text-slate-400 mt-2">
+                          {new Date(review.created_at).toLocaleString()}
+                        </p>
+                      </div>
                     </div>
-                    <div className="ml-4">
-                      <p className="font-bold text-slate-800">{review.name}</p>
-                      <p className="text-slate-600 mt-1">{review.message}</p>
-                      <p className="text-xs text-slate-400 mt-2">
-                        {new Date(review.created_at).toLocaleString()}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </Animation>
-            )))}
+                  </Card>
+              ))
+            )}
           </div>
         </div>
-      </Animation>
     </section>
   );
 };

@@ -5,11 +5,16 @@ import { About } from "@/components/About";
 import { MyJourney } from "@/components/MyJourney";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
-
 import { Guestbook } from "@/components/Guestbook";
 import { Footer } from "@/components/Footer";
 import { supabase } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Rillah | Machine Learning Engineer",
+  description: "Portfolio of Rillah",
+};
 
 async function addReview(formData: FormData) {
   "use server";
@@ -37,7 +42,7 @@ const App = async () => {
 
   return (
     <div className="min-h-screen font-sans text-slate-900 selection:bg-slate-900 selection:text-white relative bg-linear-to-br from-white-200 via-gray-50 to-slate-200 overflow-hidden">
-      <Navbar />
+      <Navbar data-aos="fade-down" data-aos-delay="200" />
 
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         {/* Top Right Blob - Blue/Indigo */}
@@ -51,20 +56,21 @@ const App = async () => {
       </div>
 
       <main className="max-w-6xl mx-auto px-6 sm:px-8 space-y-24 md:space-y-32 pb-20 relative z-10">
-        <Hero />
-        <About />
-        <MyJourney />
-        <Skills />
-        <Projects />
+        <Hero data-aos="fade-up" data-aos-delay="400" />
+        <About data-aos="fade-up" data-aos-delay="200" />
+        <MyJourney data-aos="fade-up" data-aos-delay="200" />
+        <Skills data-aos="fade-up" data-aos-delay="200" />
+        <Projects data-aos="fade-up" data-aos-delay="200" />
         
         <Guestbook
           initialReviews={reviews || []}
           addReview={addReview}
           error={error}
+          data-aos="fade-up" data-aos-delay="200"
         />
       </main>
 
-      <Footer />
+      <Footer data-aos="fade-up" data-aos-delay="200" />
     </div>
   );
 };

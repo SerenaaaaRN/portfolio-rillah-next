@@ -1,11 +1,11 @@
 "use client";
-import Animation from "./ui/Animation";
 import React, { useState, useEffect } from "react";
 import { ArrowRight, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
+import { AOSProps } from "./ui/AOSProps";
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -55,9 +55,9 @@ export const Hero: React.FC = () => {
     <section
       id="home"
       className="min-h-screen flex items-center justify-center pt-20 relative"
+      {...aosProps}
     >
       {/* Content */}
-      <Animation type="slideUp">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Text Content */}
           <div className="lg:col-span-7 space-y-8 order-2 lg:order-1 text-center lg:text-left">
@@ -149,7 +149,6 @@ export const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-      </Animation>
     </section>
   );
 };

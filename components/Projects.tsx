@@ -2,10 +2,10 @@
 import React from "react";
 import { SectionTitle, Badge, Button } from "./ui/Primitives";
 import { Github, ExternalLink, Folder } from "lucide-react";
-import Animation from "./ui/Animation";
 import Image from "next/image";
+import { AOSProps } from "./ui/AOSProps";
 
-export const Projects: React.FC = () => {
+export const Projects: React.FC<AOSProps> = ({ ...aosProps }) => {
   const projects = [
     {
       title: "Kalkulator Penyelesaian Persamaan Diferensial Kalkulus",
@@ -41,18 +41,17 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="scroll-mt-32">
-      <Animation type="fadeIn">
+    <section id="projects" className="scroll-mt-32" {...aosProps}>
         <SectionTitle
           title="Featured Projects"
           subtitle="Some of the key projects I've worked on recently"
+          data-aos="fade-up"
+          data-aos-delay="100"
         />
-      </Animation>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, idx) => (
-          <Animation type="slideUp" delay={idx * 100} key={project.title}>
-            <div className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-delay={200 + idx * 100} key={project.title}>
               <div className="relative h-48 overflow-hidden">
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors z-10" />
                 <Image
@@ -113,11 +112,10 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
             </div>
-          </Animation>
         ))}
       </div>
 
-      <div className="text-center mt-12">
+      <div className="text-center mt-12" data-aos="fade-up" data-aos-delay={200 + projects.length * 100}>
         <Button variant="ghost" className="text-slate-500">
           View all projects on GitHub
         </Button>

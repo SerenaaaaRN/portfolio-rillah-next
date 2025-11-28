@@ -1,18 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {
-  Home,
-  User,
-  GraduationCap,
-  Code2,
-  Mail,
-  Layout,
-  Menu,
-  X,
-  MessageSquare,
-} from "lucide-react";
+import {Home, User, GraduationCap, Code2, Layout, Menu, X, MessageSquare,} from "lucide-react";
+import { AOSProps } from "./ui/AOSProps";
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -86,7 +77,10 @@ export const Navbar: React.FC = () => {
     });
 
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm sm:max-w-md md:max-w-fit px-4">
+    <div
+      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm sm:max-w-md md:max-w-fit px-4"
+      {...aosProps}
+    >
       {/* Mobile & Tablet Menu Button */}
       <div className="md:hidden flex justify-end w-full">
         <button
