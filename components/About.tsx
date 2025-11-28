@@ -19,7 +19,7 @@ export const About: React.FC<AOSProps> = ({ ...aosProps }) => {
         <div className="lg:col-span-5 mt-5" data-aos="fade-right" data-aos-delay="500" data-aos-duration="2000">
           <div className="relative overflow-hidden rounded-2xl shadow-soft">
             <Image
-              src="/rillahme.jpg"
+              src="/assets/rillahme.jpg"
               alt="Working"
               width={500}
               height={500}

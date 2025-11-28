@@ -154,11 +154,12 @@ export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
         <div
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center"
           data-aos="zoom-in-left"
-          data-aos-duration="2000">
+          data-aos-duration="2000"
+        >
           <div className="relative w-72 h-72 md:w-96 md:h-96">
             <div className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2.5rem] rotate-6 transform transition-transform hover:rotate-3 duration-500 border border-white/50 shadow-lg"></div>
             <Image
-              src="/kucingHitam.jpg"
+              src="/assets/kucingHitam.jpg"
               alt="Rillah"
               fill
               className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem] shadow-2xl border-4 border-white transform transition-transform hover:-translate-y-2 duration-500"
