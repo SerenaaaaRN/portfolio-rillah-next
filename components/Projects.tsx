@@ -18,7 +18,7 @@ export const Projects: React.FC<AOSProps> = ({ ...aosProps }) => {
         "Numpy",
         "Matplotlib",
       ],
-      image: "/Project1.png",
+      image: "/assets/Project1.png",
       link: "https://kalkulusproject.vercel.app/",
       github: "https://github.com/SerenaaaaRN/kalkulus-project-1",
     },

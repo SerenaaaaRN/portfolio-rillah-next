@@ -42,7 +42,7 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
     {
       title: "Pelatihan Pemrograman",
       issuer: "Duhairillah",
-      imageUrl: "/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
+      imageUrl: "/assets/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
     },
     {
       title: "Soon",
