@@ -26,14 +26,15 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
 
   const skills = [
     { name: "Python", logoSrc: "/logo/python.svg" },
+    { name: "Numpy", logoSrc: "/logo/numpy.svg" },
+    { name: "Pandas", logoSrc: "/logo/pandas.svg" },
+    { name: "Sympy", logoSrc: "/logo/sympy.svg" },
     { name: "Java", logoSrc: "/logo/java.svg" },
     { name: "JavaScript", logoSrc: "/logo/javascript.svg" },
     { name: "Dart", logoSrc: "/logo/dart.svg" },
     { name: "Typescript", logoSrc: "/logo/typescript.svg" },
-    { name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg"},
+    { name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg" },
     { name: "C++", logoSrc: "/logo/c++.svg" },
-    { name: "Numpy", logoSrc: "/logo/numpy.svg" },
-    { name: "Pandas", logoSrc: "/logo/pandas.svg" },
     { name: "GitHub", logoSrc: "/logo/github.svg" },
     { name: "Notion", logoSrc: "/logo/notion.svg" },
   ];
@@ -42,7 +43,8 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
     {
       title: "Pelatihan Pemrograman",
       issuer: "Duhairillah",
-      imageUrl: "/assets/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
+      imageUrl:
+        "/assets/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
     },
     {
       title: "Soon",
@@ -62,13 +64,13 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
         title="Skills & Certificates"
         subtitle="A showcase of my technical skills and professional certifications"
         data-aos="fade-up"
-        data-aos-delay="500"
+        data-aos-delay="200"
       />
 
       <div
         className="flex justify-center mb-10"
         data-aos="fade-up"
-        data-aos-delay="500"
+        data-aos-delay="400"
       >
         <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
           <button
@@ -95,31 +97,37 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
         </div>
       </div>
 
-      <div
-        className="max-w-4xl mx-auto"
-        data-aos="zoom-in-up"
-        data-aos-delay="800"
-      >
+      <div className="max-w-4xl mx-auto">
         {activeTab === "tech" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-            {skills.map((skill) => (
-              <SkillCard
+            {skills.map((skill, index) => (
+              <div
                 key={skill.name}
-                name={skill.name}
-                logoSrc={skill.logoSrc}
-              />
+                data-aos="fade-up"
+                data-aos-delay={index * 150}
+                data-aos-duration="800"
+                // data-aos-anchor-placement="top-bottom" // Opsional: biar animasinya mulai pas elemen agak terlihat
+              >
+                <SkillCard name={skill.name} logoSrc={skill.logoSrc} />
+              </div>
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {certificates.map((cert, i) => (
-              <CertificateCard
+              <div
                 key={i}
-                title={cert.title}
-                issuer={cert.issuer}
-                imageUrl={cert.imageUrl}
-                onCardClick={() => openModal(cert.imageUrl)}
-              />
+                data-aos="fade-up"
+                data-aos-delay={i * 150}
+                data-aos-duration="800"
+              >
+                <CertificateCard
+                  title={cert.title}
+                  issuer={cert.issuer}
+                  imageUrl={cert.imageUrl}
+                  onCardClick={() => openModal(cert.imageUrl)}
+                />
+              </div>
             ))}
           </div>
         )}
@@ -133,10 +141,8 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
 };
 
 // -- Reusable Components --
-
 interface SkillCardProps {
   name: string;
-
   logoSrc: string;
 }
 
@@ -214,7 +220,7 @@ const CertificateModal = ({ imageUrl, onClose }: CertificateModalProps) => (
     </button>
     <div
       className="relative w-full max-w-4xl h-full max-h-[80vh]"
-      onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
+      onClick={(e) => e.stopPropagation()}
     >
       <Image
         src={imageUrl}

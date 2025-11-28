@@ -12,7 +12,7 @@ const academicData = [
     location: "Indralaya, Sumatra Selatan",
     desc: "Mahasiswa tingkat pertama dengan minat kuat pada Software Engineering dan Artificial Intelligence. Saat ini aktif membangun fondasi dalam algoritma pemrograman dan matematika komputasi.",
     tags: ["Algotitma Strukur Data", "Kalkulus", "Matriks dan Vektor"],
-    aos: "fade-right",
+    aos: "fade-left",
   },
   {
     role: "MAN 1 Palembang",
@@ -21,7 +21,7 @@ const academicData = [
     location: "Palembang, Sumatra Selatan",
     desc: "Lulusan jurusan IPS (Ilmu Pengetahuan Sosial). Memiliki ketertarikan pada Matematika",
     tags: ["Matematika", "Informatika"],
-    aos: "fade-left",
+    aos: "fade-right",
   },
   
 ];
@@ -32,7 +32,7 @@ const experienceData = [
     org: "HMIF",
     date: "2025",
     location: "Universitas Sriwijaya",
-    desc: "Forum kompetisi berskala nasional yang ditujukan bagi mahasiswa untuk mewadahi minat dan bakat mereka di bidang teknologi informasi.",
+    desc: "Berkontribusi dalam menyempurnakan desain antarmuka (UI) di Figma, khususnya dalam integrasi aset visual dan penambahan komponen fitur pada prototipe aplikasi.",
     tags: [],
     aos: "fade-left",
   },

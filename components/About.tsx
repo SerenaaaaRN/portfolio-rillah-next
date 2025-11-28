@@ -50,11 +50,11 @@ export const About: React.FC<AOSProps> = ({ ...aosProps }) => {
               </span> dan{" "}
               <span className="font-semibold">Artificial Intelligence</span>.
               Saya percaya bahwa teknologi terbaik lahir dari pemahaman konsep
-              dasar yang matang, bukan sekadar mengikuti tren.
+              dasar yang kuat.
             </p>
             <p className="leading-relaxed mb-4">
               Di luar jam kuliah, saya aktif mengeksplorasi matematika,
-              algoritma pemrograman, dan algoritma Machine Learning dasar.
+              algoritma pemrograman, dan algoritma machine learning dasar.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

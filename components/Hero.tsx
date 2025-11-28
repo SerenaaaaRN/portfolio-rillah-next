@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Mail, Github, Linkedin, Instagram } from "lucide-react";
 import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
 import { AOSProps } from "./ui/AOSProps";
@@ -114,7 +114,7 @@ export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
             >
               View Projects <ArrowRight size={18} className="ml-2" />
             </Button>
-            <a href="mailto:your-email@example.com">
+            <a href="mailto:duhairillahred927@gmail.com">
               <Button
                 variant="outline"
                 size="lg"
@@ -144,8 +144,9 @@ export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
             >
               <Github size={20} />
             </a>
-            <a href="#" className="hover:text-slate-900 transition-colors">
-              <Twitter size={20} />
+            <a href="https://www.instagram.com/__rillah?igsh=MWhvN21haXljNjFmNQ==" 
+            className="hover:text-slate-900 transition-colors">
+              <Instagram size={20} />
             </a>
           </div>
         </div>
