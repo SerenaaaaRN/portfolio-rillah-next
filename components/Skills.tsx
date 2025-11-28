@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import {Code, Award, Cpu, Terminal, Smartphone, Braces, Sigma, Table2, BookOpen, GitBranch, X,} from "lucide-react";
+import { X } from "lucide-react";
 import { SectionTitle } from "./ui/Primitives";
 import { AOSProps } from "./ui/AOSProps";
 
@@ -25,15 +25,15 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
   };
 
   const skills = [
-    { name: "Python", level: 70, icon: Terminal },
-    { name: "Java", level: 75, icon: Terminal },
-    { name: "JavaScript", level: 60, icon: Braces },
-    { name: "Dart", level: 30, icon: Smartphone },
-    { name: "C++", level: 40, icon: Cpu },
-    { name: "Numpy", level: 45, icon: Sigma },
-    { name: "Pandas", level: 30, icon: Table2 },
-    { name: "GitHub", level: 50, icon: GitBranch },
-    { name: "Notion", level: 85, icon: BookOpen },
+    { name: "Python", logoSrc: "/logo/python-svgrepo-com.svg" },
+    { name: "Java", logoSrc: "/logo/java-4-logo-svgrepo-com.svg" },
+    { name: "JavaScript", logoSrc: "/logo/javascript-svgrepo-com.svg" },
+    { name: "Dart", logoSrc: "/logo/dart-svgrepo-com.svg" },
+    { name: "C++", logoSrc: "/logo/c++.svg" },
+    { name: "Numpy", logoSrc: "/logo/numpy-svgrepo-com.svg" },
+    { name: "Pandas", logoSrc: "/logo/pandas-svgrepo-com.svg" },
+    { name: "GitHub", logoSrc: "/logo/github-142-svgrepo-com.svg" },
+    { name: "Notion", logoSrc: "/logo/notion-logo-svgrepo-com.svg" },
   ];
 
   const certificates = [
@@ -96,8 +96,7 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
                 <SkillCard
                   key={skill.name}
                   name={skill.name}
-                  level={skill.level}
-                  icon={skill.icon}
+                  logoSrc={skill.logoSrc}
                 />
               ))}
             </div>
@@ -126,29 +125,37 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
 // -- Reusable Components --
 
 interface SkillCardProps {
+
   name: string;
-  level: number;
-  icon: React.ElementType;
+
+  logoSrc: string;
+
 }
 
-const SkillCard = ({ name, level, icon: Icon }: SkillCardProps) => (
+
+
+const SkillCard = ({ name, logoSrc }: SkillCardProps) => (
+
   <div className="flex flex-col gap-4 group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+
     <div className="flex items-center justify-between">
+
       <div className="flex items-center gap-3">
+
         <div className="p-2.5 bg-slate-50 rounded-lg group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
-          <Icon size={20} />
+
+          <Image src={logoSrc} alt={name} width={20} height={20} />
+
         </div>
+
         <span className="font-bold text-slate-800">{name}</span>
+
       </div>
-      <span className="text-slate-400 font-mono text-xs">{level}%</span>
+
     </div>
-    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-      <div
-        className="h-full bg-slate-900 rounded-full transition-all duration-1000 ease-out"
-        style={{ width: `${level}%` }}
-      />
-    </div>
+
   </div>
+
 );
 
 interface CertificateCardProps {
