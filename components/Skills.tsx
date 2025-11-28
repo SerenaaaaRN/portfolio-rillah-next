@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X, Code, Award } from "lucide-react";
 import { SectionTitle } from "./ui/Primitives";
 import { AOSProps } from "./ui/AOSProps";
 
@@ -25,15 +25,17 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
   };
 
   const skills = [
-    { name: "Python", logoSrc: "/logo/python-svgrepo-com.svg" },
-    { name: "Java", logoSrc: "/logo/java-4-logo-svgrepo-com.svg" },
-    { name: "JavaScript", logoSrc: "/logo/javascript-svgrepo-com.svg" },
-    { name: "Dart", logoSrc: "/logo/dart-svgrepo-com.svg" },
+    { name: "Python", logoSrc: "/logo/python.svg" },
+    { name: "Java", logoSrc: "/logo/java.svg" },
+    { name: "JavaScript", logoSrc: "/logo/javascript.svg" },
+    { name: "Dart", logoSrc: "/logo/dart.svg" },
+    { name: "Typescript", logoSrc: "/logo/typescript.svg" },
+    { name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg"},
     { name: "C++", logoSrc: "/logo/c++.svg" },
-    { name: "Numpy", logoSrc: "/logo/numpy-svgrepo-com.svg" },
-    { name: "Pandas", logoSrc: "/logo/pandas-svgrepo-com.svg" },
-    { name: "GitHub", logoSrc: "/logo/github-142-svgrepo-com.svg" },
-    { name: "Notion", logoSrc: "/logo/notion-logo-svgrepo-com.svg" },
+    { name: "Numpy", logoSrc: "/logo/numpy.svg" },
+    { name: "Pandas", logoSrc: "/logo/pandas.svg" },
+    { name: "GitHub", logoSrc: "/logo/github.svg" },
+    { name: "Notion", logoSrc: "/logo/notion.svg" },
   ];
 
   const certificates = [
@@ -63,7 +65,11 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
         data-aos-delay="500"
       />
 
-      <div className="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="500">
+      <div
+        className="flex justify-center mb-10"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
         <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
           <button
             onClick={() => setActiveTab("tech")}
@@ -89,31 +95,35 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
         </div>
       </div>
 
-        <div className="max-w-4xl mx-auto" data-aos="zoom-in-up" data-aos-delay="800">
-          {activeTab === "tech" ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-              {skills.map((skill) => (
-                <SkillCard
-                  key={skill.name}
-                  name={skill.name}
-                  logoSrc={skill.logoSrc}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certificates.map((cert, i) => (
-                <CertificateCard
-                  key={i}
-                  title={cert.title}
-                  issuer={cert.issuer}
-                  imageUrl={cert.imageUrl}
-                  onCardClick={() => openModal(cert.imageUrl)}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+      <div
+        className="max-w-4xl mx-auto"
+        data-aos="zoom-in-up"
+        data-aos-delay="800"
+      >
+        {activeTab === "tech" ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            {skills.map((skill) => (
+              <SkillCard
+                key={skill.name}
+                name={skill.name}
+                logoSrc={skill.logoSrc}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {certificates.map((cert, i) => (
+              <CertificateCard
+                key={i}
+                title={cert.title}
+                issuer={cert.issuer}
+                imageUrl={cert.imageUrl}
+                onCardClick={() => openModal(cert.imageUrl)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
       {isModalOpen && selectedCert && (
         <CertificateModal imageUrl={selectedCert} onClose={closeModal} />
@@ -125,37 +135,23 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
 // -- Reusable Components --
 
 interface SkillCardProps {
-
   name: string;
 
   logoSrc: string;
-
 }
 
-
-
 const SkillCard = ({ name, logoSrc }: SkillCardProps) => (
-
-  <div className="flex flex-col gap-4 group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-
+  <div className="flex flex-col gap-4 group bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 glass-effect">
     <div className="flex items-center justify-between">
-
       <div className="flex items-center gap-3">
-
-        <div className="p-2.5 bg-slate-50 rounded-lg group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
-
-          <Image src={logoSrc} alt={name} width={20} height={20} />
-
+        <div className="p-2.5 bg-slate-50/60 rounded-lg group-hover:bg-slate-200/80 group-hover:text-white transition-colors duration-300">
+          <Image src={logoSrc} alt={name} width={35} height={35} />
         </div>
 
         <span className="font-bold text-slate-800">{name}</span>
-
       </div>
-
     </div>
-
   </div>
-
 );
 
 interface CertificateCardProps {
@@ -165,7 +161,12 @@ interface CertificateCardProps {
   onCardClick: () => void;
 }
 
-const CertificateCard = ({ title, issuer, imageUrl, onCardClick }: CertificateCardProps) => (
+const CertificateCard = ({
+  title,
+  issuer,
+  imageUrl,
+  onCardClick,
+}: CertificateCardProps) => (
   <div
     className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group overflow-hidden cursor-pointer"
     onClick={onCardClick}
