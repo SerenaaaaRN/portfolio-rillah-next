@@ -10,8 +10,8 @@ export const MyJourney: React.FC<AOSProps> = ({ ...aosProps }) => {
       <SectionTitle
         title="My Journey"
         subtitle="A timeline of my academic and personal milestones"
-        data-aos="fade-up"
-        data-aos-delay="100"
+        data-aos="fade-right"
+        data-aos-delay="500"
       />
 
       <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">

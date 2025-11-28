@@ -46,12 +46,12 @@ export const Projects: React.FC<AOSProps> = ({ ...aosProps }) => {
           title="Featured Projects"
           subtitle="Some of the key projects I've worked on recently"
           data-aos="fade-up"
-          data-aos-delay="100"
+          data-aos-delay="500"
         />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, idx) => (
-            <div className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-delay={200 + idx * 100} key={project.title}>
+            <div className="group flex flex-col h-full bg-white rounded-2xl border border-slate-100 shadow-soft overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-aos="zoom-in-up" data-aos-delay={500 + idx * 100} key={project.title}>
               <div className="relative h-48 overflow-hidden">
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors z-10" />
                 <Image

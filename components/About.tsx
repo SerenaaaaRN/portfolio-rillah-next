@@ -12,14 +12,14 @@ export const About: React.FC<AOSProps> = ({ ...aosProps }) => {
           title="About Me"
           subtitle="Passionate about creating innovative solutions through data and algorithms"
           data-aos="fade-up"
-          data-aos-delay="100"
+          data-aos-duration="2000"
         />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <div className="lg:col-span-5 mt-5" data-aos="fade-right" data-aos-delay="200">
+        <div className="lg:col-span-5 mt-5" data-aos="fade-right" data-aos-delay="500" data-aos-duration="2000">
           <div className="relative overflow-hidden rounded-2xl shadow-soft">
             <Image
-              src="/nancymomoland2.jpg"
+              src="/rillahme.jpg"
               alt="Working"
               width={500}
               height={500}
@@ -28,12 +28,10 @@ export const About: React.FC<AOSProps> = ({ ...aosProps }) => {
           </div>
         </div>
 
-        <div
+        <div 
           className="lg:col-span-7 space-y-8 mt-5"
-          data-aos="fade-left"
-          data-aos-delay="300"
-        >
-          <div className="prose prose-slate max-w-none text-slate-600">
+          data-aos="fade-up" data-aos-delay="500" data-aos-duration="2000">
+          <div className="prose prose-slate max-w-none text-slate-600" data-aos="fade-left" data-aos-delay="500" data-aos-duration="2000">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
               Hello There!
             </h3>

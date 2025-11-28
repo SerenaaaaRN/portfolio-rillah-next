@@ -60,10 +60,10 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
         title="Skills & Certificates"
         subtitle="A showcase of my technical skills and professional certifications"
         data-aos="fade-up"
-        data-aos-delay="100"
+        data-aos-delay="500"
       />
 
-      <div className="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="200">
+      <div className="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="500">
         <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
           <button
             onClick={() => setActiveTab("tech")}
@@ -89,7 +89,7 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
         </div>
       </div>
 
-        <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+        <div className="max-w-4xl mx-auto" data-aos="zoom-in-up" data-aos-delay="800">
           {activeTab === "tech" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
               {skills.map((skill) => (
@@ -163,7 +163,7 @@ const CertificateCard = ({ title, issuer, imageUrl, onCardClick }: CertificateCa
     className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group overflow-hidden cursor-pointer"
     onClick={onCardClick}
   >
-    <div className="aspect-[4/3] relative">
+    <div className="aspect-4/3 relative">
       {imageUrl ? (
         <Image
           src={imageUrl}

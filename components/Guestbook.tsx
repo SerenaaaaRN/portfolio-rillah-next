@@ -48,10 +48,10 @@ export const Guestbook: React.FC<{
           title="Guestbook"
           subtitle="Leave a message or a review of my portfolio"
           data-aos="fade-up"
-          data-aos-delay="100"
+          data-aos-delay="500"
         />
 
-        <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+        <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="500">
           <Card className="p-8">
             <form
               ref={formRef}
