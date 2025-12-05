@@ -59,7 +59,7 @@ export const About: React.FC<AOSProps> = ({ ...aosProps }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <InfoCard icon={User} label="Name" value="Rillah" />
-              <InfoCard icon={MapPin} label="Location" value="Palembang" />
+              <InfoCard icon={MapPin} label="Location" value="Indonesia" />
               <InfoCard
                 icon={GraduationCap}
                 label="Education"

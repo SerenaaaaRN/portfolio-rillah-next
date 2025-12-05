@@ -5,7 +5,7 @@ import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
 import { AOSProps } from "./ui/AOSProps";
 
-export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
+export const Hero: React.FC<AOSProps> = ({ }) => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -67,7 +67,7 @@ export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
           >
             <Badge variant="success" className="animate-fade-in-up shadow-sm">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-              Student @Universitas Sriwijaya
+              Student @Sriwijaya University
             </Badge>
           </div>
 
@@ -90,7 +90,7 @@ export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
               data-aos="fade-right"
               data-aos-duration="2000"
             >
-              A first-year Informatics student at Universitas Sriwijaya. I am
+              A first-year Informatics student at Sriwijaya University. I am
               passionate about bridging the gap between Mathematical Logic and
               Software Engineering. Currently building my foundation in
               Algorithms and Data Science.
@@ -144,8 +144,10 @@ export const Hero: React.FC<AOSProps> = ({ ...aosProps }) => {
             >
               <Github size={20} />
             </a>
-            <a href="https://www.instagram.com/__rillah?igsh=MWhvN21haXljNjFmNQ==" 
-            className="hover:text-slate-900 transition-colors">
+            <a
+              href="https://www.instagram.com/__rillah?igsh=MWhvN21haXljNjFmNQ=="
+              className="hover:text-slate-900 transition-colors"
+            >
               <Instagram size={20} />
             </a>
           </div>
