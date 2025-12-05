@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {Home, User, GraduationCap, Code2, Layout, Menu, X, MessageSquare,} from "lucide-react";
+import {Home, User, GraduationCap, Code2, Layout, Menu, X, MessageSquare} from "lucide-react";
 import { AOSProps } from "./ui/AOSProps";
+import Lottie from "lottie-react";
+import catAnimation from "@/src/icon/Cat fishing on moon.json";
 
 export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
   const [activeSection, setActiveSection] = useState("home");
@@ -25,10 +27,9 @@ export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false); // Close menu on selection
+    setIsMenuOpen(false);
   };
 
-  // Update active section on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -101,6 +102,13 @@ export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
       {/* Desktop Menu */}
       <nav className="hidden md:flex bg-white/90 backdrop-blur-md shadow-soft border border-slate-200/60 rounded-full px-2 py-1.5 items-center gap-1">
         {renderNavItems(false)}
+        <div className="h-6 w-px bg-slate-200 mx-1"></div>
+        <div
+          className="w-20 h-10 flex items-center justify-center -mt-1 hover:scale-110 transition-transform duration-300 cursor-pointer"
+          title="Meow!"
+        >
+          <Lottie animationData={catAnimation} loop={true} autoplay={true} />
+        </div>
       </nav>
     </div>
   );
