@@ -5,7 +5,7 @@ import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
 import { AOSProps } from "./ui/AOSProps";
 
-export const Hero: React.FC<AOSProps> = ({ }) => {
+export const Hero: React.FC<AOSProps> = ({}) => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -135,7 +135,10 @@ export const Hero: React.FC<AOSProps> = ({ }) => {
             data-aos-duration="2000"
           >
             <span className="text-sm font-medium">Follow me:</span>
-            <a href="#" className="hover:text-slate-900 transition-colors">
+            <a
+              href="https://www.linkedin.com/in/duhairillah-690679281/"
+              className="hover:text-slate-900 transition-colors"
+            >
               <Linkedin size={20} />
             </a>
             <a
