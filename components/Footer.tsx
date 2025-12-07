@@ -11,18 +11,11 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-6 text-sm text-slate-500 font-medium">
-          <a href="#home" className="hover:text-slate-900 transition-colors">
-            Home
-          </a>
-          <a href="#about" className="hover:text-slate-900 transition-colors">
-            About
-          </a>
-          <a
-            href="#projects"
-            className="hover:text-slate-900 transition-colors"
-          >
-            Projects
-          </a>
+          <a href="#home" className="hover:text-slate-900 transition-colors">Home</a>
+          <a href="#about" className="hover:text-slate-900 transition-colors">About</a>
+          <a href="#myjourney" className="hover:text-slate-900 transition-colors">My Journay</a>
+          <a href="#skill" className="hover:text-slate-900 transition-colors">Skill</a>
+          <a href="#projects" className="hover:text-slate-900 transition-colors">Projects</a>
         </div>
 
         <div className="text-xs text-slate-400">
