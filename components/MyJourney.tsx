@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { GraduationCap, Calendar, Briefcase } from "lucide-react";
-import { SectionTitle } from "./ui/Primitives"; 
-import { AOSProps } from "./ui/AOSProps";
+import { SectionTitle } from "./ui/SectionTitle";
+import { motion } from "framer-motion";
+import { StaggerContainer, FadeUp, FadeLeft, FadeRight } from "@/lib/variants";
 
 const academicData = [
   {
@@ -12,7 +13,6 @@ const academicData = [
     location: "Indralaya, Sumatra Selatan",
     desc: "Mahasiswa tingkat pertama dengan minat kuat pada Software Engineering dan Artificial Intelligence. Saat ini aktif membangun fondasi dalam algoritma pemrograman dan matematika komputasi.",
     tags: ["Algotitma Strukur Data", "Kalkulus", "Matriks dan Vektor"],
-    aos: "fade-left",
   },
   {
     role: "MAN 1 Palembang",
@@ -21,9 +21,7 @@ const academicData = [
     location: "Palembang, Sumatra Selatan",
     desc: "Lulusan jurusan IPS (Ilmu Pengetahuan Sosial). Memiliki ketertarikan pada Matematika",
     tags: ["Matematika", "Informatika"],
-    aos: "fade-right",
   },
-  
 ];
 
 const experienceData = [
@@ -34,25 +32,31 @@ const experienceData = [
     location: "Universitas Sriwijaya",
     desc: "Berkontribusi dalam menyempurnakan desain antarmuka (UI) di Figma, khususnya dalam integrasi aset visual dan penambahan komponen fitur pada prototipe aplikasi.",
     tags: [],
-    aos: "fade-left",
   },
 ];
 
-export const MyJourney: React.FC<AOSProps> = ({ ...aosProps }) => {
+export const MyJourney: React.FC = () => {
   const [activeTab, setActiveTab] = useState("academic");
-
   const data = activeTab === "academic" ? academicData : experienceData;
 
   return (
-    <section id="myjourney" className="scroll-mt-32" {...aosProps}>
+    <motion.section
+      id="myjourney"
+      variants={StaggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="scroll-mt-32"
+    >
       <SectionTitle
         title="My Journey"
         subtitle="A timeline of my academic and professional milestones"
-        data-aos="fade-right"
-        data-aos-delay="500"
       />
 
-      <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+      <motion.div
+        variants={FadeUp}
+        className="max-w-4xl mx-auto"
+      >
         <div className="flex justify-center mb-10">
           <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
             <button
@@ -87,14 +91,19 @@ export const MyJourney: React.FC<AOSProps> = ({ ...aosProps }) => {
               location={item.location}
               desc={item.desc}
               tags={item.tags}
-              icon={activeTab === 'academic' ? <GraduationCap size={18} /> : <Briefcase size={18} />}
-              data-aos={item.aos}
-              data-aos-delay={(300 + index * 100).toString()}
+              icon={
+                activeTab === "academic" ? (
+                  <GraduationCap size={18} />
+                ) : (
+                  <Briefcase size={18} />
+                )
+              }
+              variant={index % 2 === 0 ? FadeLeft : FadeRight}
             />
           ))}
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
@@ -106,17 +115,7 @@ interface TimelineItemProps {
   desc: string;
   tags: string[];
   icon: React.ReactNode;
-  "data-aos"?: string;
-  "data-aos-offset"?: string;
-  "data-aos-duration"?: string;
-  "data-aos-easing"?: string;
-  "data-aos-delay"?: string;
-  "data-aos-anchor"?: string;
-  "data-aos-anchor-placement"?: string;
-  "data-aos-once"?: string;
-  "data-aos-mirror"?: string;
-  "data-aos-waw"?: string;
-  "data-aos-disable"?: string;
+  variant: any;
 }
 
 const TimelineItem = ({
@@ -127,11 +126,11 @@ const TimelineItem = ({
   desc,
   tags,
   icon,
-  ...aosProps
+  variant,
 }: TimelineItemProps) => (
-  <div
-    className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-    {...aosProps}
+  <motion.div
+    variants={variant}
+    className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
   >
     {/* Icon Dot */}
     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 group-hover:bg-slate-900 group-hover:text-white text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors duration-300">
@@ -166,5 +165,6 @@ const TimelineItem = ({
         ))}
       </div>
     </div>
-  </div>
+  </motion.div>
 );
+

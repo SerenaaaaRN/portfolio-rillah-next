@@ -3,10 +3,17 @@ import React, { useEffect, useRef } from "react";
 import { ArrowRight, Mail, Github, Linkedin, Instagram } from "lucide-react";
 import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
-import { AOSProps } from "./ui/AOSProps";
 import Typed from "typed.js";
+import { motion } from "framer-motion";
+import {
+  StaggerContainer,
+  FadeUp,
+  FadeRight,
+  ZoomIn,
+  FadeDown,
+} from "@/lib/variants";
 
-export const Hero: React.FC<AOSProps> = ({}) => {
+export const Hero: React.FC = () => {
   const el = useRef(null);
 
   useEffect(() => {
@@ -34,48 +41,43 @@ export const Hero: React.FC<AOSProps> = ({}) => {
       id="home"
       className="min-h-screen flex items-center justify-center pt-20 relative"
     >
-      {/* Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <motion.div
+        variants={StaggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
         {/* Text Content */}
         <div className="lg:col-span-7 space-y-8 order-2 lg:order-1 text-center lg:text-left">
-          <div
+          <motion.div
+            variants={FadeDown}
             className="flex justify-center lg:justify-start"
-            data-aos="fade-down-right"
-            data-aos-duration="2000"
           >
             <Badge variant="success" className="animate-fade-in-up shadow-sm">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 animate-pulse"></span>
               Student @Sriwijaya University
             </Badge>
-          </div>
+          </motion.div>
 
-          <div className="space-y-4">
-            <h1
-              className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight"
-              data-aos="fade-down-right"
-              data-aos-duration="2000"
-            >
+          <motion.div variants={FadeRight} className="space-y-4">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
               Hi, I&apos;m Rillah <br />
               <span className="text-3xl md:text-4xl text-slate-500/90 h-[1.2em] inline-block">
                 <span ref={el} />
               </span>
             </h1>
-            <p
-              className="text-lg md:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-              data-aos="fade-right"
-              data-aos-duration="2000"
-            >
+            <p className="text-lg md:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               A first-year Informatics student at Sriwijaya University. I am
               passionate about bridging the gap between Mathematical Logic and
               Software Engineering. Currently building my foundation in
               Algorithms and Data Science.
             </p>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            variants={FadeUp}
             className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
-            data-aos="fade-up"
-            data-aos-duration="2000"
           >
             <Button
               variant="primary"
@@ -102,12 +104,11 @@ export const Hero: React.FC<AOSProps> = ({}) => {
                 />
               </Button>
             </a>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            variants={FadeRight}
             className="flex items-center gap-6 justify-center lg:justify-start pt-4 text-slate-500"
-            data-aos="fade-right"
-            data-aos-duration="2000"
           >
             <span className="text-sm font-medium">Follow me:</span>
             <a
@@ -128,14 +129,13 @@ export const Hero: React.FC<AOSProps> = ({}) => {
             >
               <Instagram size={20} />
             </a>
-          </div>
+          </motion.div>
         </div>
 
         {/* Hero Image */}
-        <div
+        <motion.div
+          variants={ZoomIn}
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center"
-          data-aos="zoom-in-left"
-          data-aos-duration="2000"
         >
           <div className="relative w-72 h-72 md:w-96 md:h-96">
             <div className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2.5rem] rotate-6 transform transition-transform hover:rotate-3 duration-500 border border-white/50 shadow-lg"></div>
@@ -148,8 +148,8 @@ export const Hero: React.FC<AOSProps> = ({}) => {
               priority
             />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

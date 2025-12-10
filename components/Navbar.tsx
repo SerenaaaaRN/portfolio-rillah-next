@@ -1,11 +1,21 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {Home, User, GraduationCap, Code2, Layout, Menu, X, MessageSquare} from "lucide-react";
-import { AOSProps } from "./ui/AOSProps";
+import {
+  Home,
+  User,
+  GraduationCap,
+  Code2,
+  Layout,
+  Menu,
+  X,
+  MessageSquare,
+} from "lucide-react";
 import Lottie from "lottie-react";
 import catAnimation from "@/src/icon/Cat fishing on moon.json";
+import { motion } from "framer-motion";
+import { FadeDown } from "@/lib/variants";
 
-export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
+export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -78,9 +88,11 @@ export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
     });
 
   return (
-    <div
+    <motion.div
+      variants={FadeDown}
+      initial="hidden"
+      animate="show"
       className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm sm:max-w-md md:max-w-fit px-4"
-      {...aosProps}
     >
       {/* Mobile & Tablet Menu Button */}
       <div className="md:hidden flex justify-end w-full">
@@ -110,6 +122,6 @@ export const Navbar: React.FC<AOSProps> = ({ ...aosProps }) => {
           <Lottie animationData={catAnimation} loop={true} autoplay={true} />
         </div>
       </nav>
-    </div>
+    </motion.div>
   );
 };

@@ -1,13 +1,47 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { X, Code, Award } from "lucide-react";
-import { SectionTitle } from "./ui/Primitives";
-import { AOSProps } from "./ui/AOSProps";
+import { SectionTitle } from "./ui/SectionTitle";
+import { motion, AnimatePresence } from "framer-motion";
+import { StaggerContainer, FadeUp, FadeIn, ZoomIn } from "@/lib/variants";
 
 type TabType = "tech" | "certs";
 
-export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
+const skills = [
+    { name: "Python", logoSrc: "/logo/python.svg" },
+    { name: "Numpy", logoSrc: "/logo/numpy.svg" },
+    { name: "Pandas", logoSrc: "/logo/pandas.svg" },
+    { name: "Sympy", logoSrc: "/logo/sympy.svg" },
+    { name: "Java", logoSrc: "/logo/java.svg" },
+    { name: "JavaScript", logoSrc: "/logo/javascript.svg" },
+    { name: "Dart", logoSrc: "/logo/dart.svg" },
+    { name: "Typescript", logoSrc: "/logo/typescript.svg" },
+    { name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg" },
+    { name: "C++", logoSrc: "/logo/c++.svg" },
+    { name: "GitHub", logoSrc: "/logo/github.svg" },
+    { name: "Notion", logoSrc: "/logo/notion.svg" },
+  ];
+
+const certificates = [
+  {
+    title: "Pelatihan Pemrograman",
+    issuer: "Duhairillah",
+    imageUrl: "/assets/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
+  },
+  {
+    title: "Soon",
+    issuer: "",
+    imageUrl: "", // Placeholder
+  },
+  {
+    title: "Soon",
+    issuer: "",
+    imageUrl: "", // Placeholder
+  },
+];
+
+export const Skills: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("tech");
   const [selectedCert, setSelectedCert] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,53 +58,23 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
     setSelectedCert(null);
   };
 
-  const skills = [
-    { name: "Python", logoSrc: "/logo/python.svg" },
-    { name: "Numpy", logoSrc: "/logo/numpy.svg" },
-    { name: "Pandas", logoSrc: "/logo/pandas.svg" },
-    { name: "Sympy", logoSrc: "/logo/sympy.svg" },
-    { name: "Java", logoSrc: "/logo/java.svg" },
-    { name: "JavaScript", logoSrc: "/logo/javascript.svg" },
-    { name: "Dart", logoSrc: "/logo/dart.svg" },
-    { name: "Typescript", logoSrc: "/logo/typescript.svg" },
-    { name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg" },
-    { name: "C++", logoSrc: "/logo/c++.svg" },
-    { name: "GitHub", logoSrc: "/logo/github.svg" },
-    { name: "Notion", logoSrc: "/logo/notion.svg" },
-  ];
-
-  const certificates = [
-    {
-      title: "Pelatihan Pemrograman",
-      issuer: "Duhairillah",
-      imageUrl:
-        "/assets/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
-    },
-    {
-      title: "Soon",
-      issuer: "",
-      imageUrl: "", // Placeholder
-    },
-    {
-      title: "Soon",
-      issuer: "",
-      imageUrl: "", // Placeholder
-    },
-  ];
-
   return (
-    <section id="skills" className="scroll-mt-32" {...aosProps}>
+    <motion.section
+      id="skills"
+      variants={StaggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="scroll-mt-32"
+    >
       <SectionTitle
         title="Skills & Certificates"
         subtitle="A showcase of my technical skills and professional certifications"
-        data-aos="fade-up"
-        data-aos-delay="200"
       />
 
-      <div
+      <motion.div
+        variants={FadeUp}
         className="flex justify-center mb-10"
-        data-aos="fade-up"
-        data-aos-delay="400"
       >
         <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
           <button
@@ -95,65 +99,62 @@ export const Skills: React.FC<AOSProps> = ({ ...aosProps }) => {
             <Award size={16} /> Certificates
           </button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="max-w-4xl mx-auto">
+      <motion.div
+        key={activeTab}
+        variants={StaggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="max-w-4xl mx-auto"
+      >
         {activeTab === "tech" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-            {skills.map((skill, index) => (
-              <div
-                key={skill.name}
-                data-aos="fade-up"
-                data-aos-delay={index * 150}
-                data-aos-duration="800"
-                // data-aos-anchor-placement="top-bottom" // Opsional: biar animasinya mulai pas elemen agak terlihat
-              >
+            {skills.map((skill) => (
+              <motion.div key={skill.name} variants={FadeUp}>
                 <SkillCard name={skill.name} logoSrc={skill.logoSrc} />
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {certificates.map((cert, i) => (
-              <div
-                key={i}
-                data-aos="fade-up"
-                data-aos-delay={i * 150}
-                data-aos-duration="800"
-              >
+              <motion.div key={i} variants={FadeUp}>
                 <CertificateCard
                   title={cert.title}
                   issuer={cert.issuer}
                   imageUrl={cert.imageUrl}
                   onCardClick={() => openModal(cert.imageUrl)}
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
 
-      {isModalOpen && selectedCert && (
-        <CertificateModal imageUrl={selectedCert} onClose={closeModal} />
-      )}
-    </section>
+      <AnimatePresence>
+        {isModalOpen && selectedCert && (
+          <CertificateModal imageUrl={selectedCert} onClose={closeModal} />
+        )}
+      </AnimatePresence>
+    </motion.section>
   );
 };
 
 // -- Reusable Components --
 interface SkillCardProps {
   name: string;
-  logoSrc: string;
+  logoSrc: string | StaticImageData;
 }
 
 const SkillCard = ({ name, logoSrc }: SkillCardProps) => (
-  <div className="flex flex-col gap-4 group bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 glass-effect">
+  <div className="flex flex-col gap-4 group bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 glass-effect h-full">
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
         <div className="p-2.5 bg-slate-50/60 rounded-lg group-hover:bg-slate-200/80 group-hover:text-white transition-colors duration-300">
           <Image src={logoSrc} alt={name} width={35} height={35} />
         </div>
-
         <span className="font-bold text-slate-800">{name}</span>
       </div>
     </div>
@@ -163,7 +164,7 @@ const SkillCard = ({ name, logoSrc }: SkillCardProps) => (
 interface CertificateCardProps {
   title: string;
   issuer: string;
-  imageUrl: string;
+  imageUrl: string | StaticImageData;
   onCardClick: () => void;
 }
 
@@ -174,7 +175,7 @@ const CertificateCard = ({
   onCardClick,
 }: CertificateCardProps) => (
   <div
-    className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group overflow-hidden cursor-pointer"
+    className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 group overflow-hidden cursor-pointer h-full"
     onClick={onCardClick}
   >
     <div className="aspect-4/3 relative">
@@ -182,8 +183,9 @@ const CertificateCard = ({
         <Image
           src={imageUrl}
           alt="Certificate"
-          layout="fill"
+          fill
           objectFit="contain"
+          className="p-2"
         />
       ) : (
         <div className="w-full h-full bg-slate-50 flex items-center justify-center">
@@ -208,28 +210,33 @@ interface CertificateModalProps {
 }
 
 const CertificateModal = ({ imageUrl, onClose }: CertificateModalProps) => (
-  <div
+  <motion.div
+    initial="hidden"
+    animate="show"
+    exit="hidden"
+    variants={FadeIn}
     className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
     onClick={onClose}
   >
     <button
-      className="absolute top-4 right-4 text-white hover:text-slate-300 transition-colors"
+      className="absolute top-4 right-4 text-white hover:text-slate-300 transition-colors z-10"
       onClick={onClose}
     >
       <X size={32} />
     </button>
-    <div
+    <motion.div
+      variants={ZoomIn}
       className="relative w-full max-w-4xl h-full max-h-[80vh]"
       onClick={(e) => e.stopPropagation()}
     >
       <Image
         src={imageUrl}
         alt="Certificate"
-        layout="fill"
+        fill
         objectFit="contain"
       />
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 );
 
 export default Skills;

@@ -1,9 +1,12 @@
 "use client";
 import React, { useRef } from "react";
-import { SectionTitle, Button, Card } from "./ui/Primitives";
+import { SectionTitle } from "./ui/SectionTitle";
+import { Button } from "./ui/Button";
+import { Card } from "./ui/Card";
 import { useFormStatus } from "react-dom";
 import { Send, LoaderCircle } from "lucide-react";
-import { AOSProps } from "./ui/AOSProps";
+import { motion } from "framer-motion";
+import { StaggerContainer, FadeUp } from "@/lib/variants";
 
 // Define the shape of a review
 interface Review {
@@ -12,7 +15,6 @@ interface Review {
   name: string;
   message: string;
 }
-
 
 // Submit Button Component
 function SubmitButton() {
@@ -39,101 +41,117 @@ export const Guestbook: React.FC<{
   initialReviews: Review[];
   addReview: (formData: FormData) => Promise<void>;
   error?: Error | null;
-} & AOSProps> = ({ initialReviews, addReview, error, ...aosProps }) => {
+}> = ({ initialReviews, addReview, error }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
-    <section id="guestbook" className="scroll-mt-32" {...aosProps}>
-        <SectionTitle
-          title="Guestbook"
-          subtitle="Leave a message or a review of my portfolio"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        />
+    <motion.section
+      id="guestbook"
+      variants={StaggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="scroll-mt-32"
+    >
+      <SectionTitle
+        title="Guestbook"
+        subtitle="Leave a message or a review of my portfolio"
+      />
 
-        <div className="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="500">
-          <Card className="p-8">
-            <form
-              ref={formRef}
-              action={async (formData) => {
-                await addReview(formData);
-                formRef.current?.reset();
-              }}
-              className="flex flex-col gap-4"
-            >
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-slate-700 mb-1"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your name"
-                    required
-                    className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                  />
-                </div>
-              </div>
-              <div>
+      <motion.div
+        variants={FadeUp}
+        className="max-w-4xl mx-auto"
+      >
+        <Card className="p-8">
+          <form
+            ref={formRef}
+            action={async (formData) => {
+              await addReview(formData);
+              formRef.current?.reset();
+            }}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1">
                 <label
-                  htmlFor="message"
+                  htmlFor="name"
                   className="block text-sm font-medium text-slate-700 mb-1"
                 >
-                  Message
+                  Name
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  placeholder="Your message..."
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
                   required
                   className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                ></textarea>
+                />
               </div>
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-slate-700 mb-1"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                placeholder="Your message..."
+                required
+                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              ></textarea>
+            </div>
 
-              <div className="flex justify-end items-center">
-                <SubmitButton />
-              </div>
-            </form>
-          </Card>
+            <div className="flex justify-end items-center">
+              <SubmitButton />
+            </div>
+          </form>
+        </Card>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <h3 className="text-2xl font-bold text-slate-900 text-center col-span-full">
-              Recent Reviews
-            </h3>
-            {error ? (
-              <p className="text-red-500 text-center col-span-full">
-                Error loading reviews. Please try again later.
-              </p>
-            ) : (
-              initialReviews.map((review, index) => (
-                  <Card className="p-6" key={review.id} data-aos="fade-up" data-aos-delay={300 + index * 50}>
-                    <div className="flex items-start">
-                      <div className="shrink-0 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
-                        <span className="text-lg font-bold text-slate-500">
-                          {review.name.charAt(0).toUpperCase()}
-                        </span>
-                      </div>
-                      <div className="ml-4">
-                        <p className="font-bold text-slate-800">
-                          {review.name}
-                        </p>
-                        <p className="text-slate-600 mt-1">{review.message}</p>
-                        <p className="text-xs text-slate-400 mt-2">
-                          {new Date(review.created_at).toLocaleString()}
-                        </p>
-                      </div>
+        <motion.div
+          variants={StaggerContainer}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          <h3 className="text-2xl font-bold text-slate-900 text-center col-span-full">
+            Recent Reviews
+          </h3>
+          {error ? (
+            <p className="text-red-500 text-center col-span-full">
+              Error loading reviews. Please try again later.
+            </p>
+          ) : (
+            initialReviews.map((review) => (
+              <motion.div
+                key={review.id}
+                variants={FadeUp}
+              >
+                <Card className="p-6 h-full">
+                  <div className="flex items-start">
+                    <div className="shrink-0 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
+                      <span className="text-lg font-bold text-slate-500">
+                        {review.name.charAt(0).toUpperCase()}
+                      </span>
                     </div>
-                  </Card>
-              ))
-            )}
-          </div>
-        </div>
-    </section>
+                    <div className="ml-4">
+                      <p className="font-bold text-slate-800">
+                        {review.name}
+                      </p>
+                      <p className="text-slate-600 mt-1">{review.message}</p>
+                      <p className="text-xs text-slate-400 mt-2">
+                        {new Date(review.created_at).toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))
+          )}
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 };
