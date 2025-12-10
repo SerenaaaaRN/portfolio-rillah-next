@@ -2,11 +2,17 @@
 import React, { useState } from "react";
 import { GraduationCap, Calendar, Briefcase } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
-import { motion, AnimatePresence } from "framer-motion";
-import { StaggerContainer, subtleFadeUp, FadeLeft, FadeRight } from "@/lib/variants";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import {
+  StaggerContainer,
+  subtleFadeUp,
+  FadeLeft,
+  FadeRight,
+} from "@/lib/variants";
 
 const academicData = [
   {
+    id: "edu1",
     role: "S1 Teknik Informatika",
     org: "Universitas Sriwijaya",
     date: "2025 - Sekarang",
@@ -15,6 +21,7 @@ const academicData = [
     tags: ["Algotitma Strukur Data", "Kalkulus", "Matriks dan Vektor"],
   },
   {
+    id: "edu2",
     role: "MAN 1 Palembang",
     org: "",
     date: "2020 - 2023",
@@ -26,6 +33,7 @@ const academicData = [
 
 const experienceData = [
   {
+    id: "exp1",
     role: "Volunteer Software Engineer",
     org: "HMIF",
     date: "2025",
@@ -40,14 +48,7 @@ export const MyJourney: React.FC = () => {
   const data = activeTab === "academic" ? academicData : experienceData;
 
   return (
-    <motion.section
-      id="myjourney"
-      variants={StaggerContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
-      className="scroll-mt-32"
-    >
+    <motion.section id="myjourney" className="scroll-mt-32">
       <SectionTitle
         title="My Journey"
         subtitle="A timeline of my academic and professional milestones"
@@ -55,57 +56,65 @@ export const MyJourney: React.FC = () => {
 
       <motion.div
         variants={subtleFadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
         className="max-w-4xl mx-auto"
       >
         <div className="flex justify-center mb-10">
-          <div className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative">
+          <div
+            role="tablist"
+            className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative"
+          >
             <button
               onClick={() => setActiveTab("academic")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 ${
-                activeTab === "academic"
-                  ? "text-slate-900"
-                  : "text-slate-500 hover:text-slate-700"
-              }`}
+              className="relative flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 z-10"
+              role="tab"
+              aria-selected={activeTab === "academic"}
             >
-              <GraduationCap size={16} /> Academic
+              {activeTab === "academic" && (
+                <motion.div
+                  layoutId="activeJourneyTab"
+                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                  className="absolute inset-0 bg-white rounded-full shadow-md"
+                />
+              )}
+              <span className="relative z-10 flex items-center gap-2">
+                <GraduationCap size={16} /> Academic
+              </span>
             </button>
             <button
               onClick={() => setActiveTab("experience")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 ${
-                activeTab === "experience"
-                  ? "text-slate-900"
-                  : "text-slate-500 hover:text-slate-700"
-              }`}
+              className="relative flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 z-10"
+              role="tab"
+              aria-selected={activeTab === "experience"}
             >
-              <Briefcase size={16} /> Experience
+              {activeTab === "experience" && (
+                <motion.div
+                  layoutId="activeJourneyTab"
+                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                  className="absolute inset-0 bg-white rounded-full shadow-md"
+                />
+              )}
+              <span className="relative z-10 flex items-center gap-2">
+                <Briefcase size={16} /> Experience
+              </span>
             </button>
-            {/* Animated background */}
-            <motion.div
-              layoutId="activeTab"
-              transition={{ type: "spring", stiffness: 200, damping: 25 }}
-              className={`absolute inset-0 bg-white rounded-full -z-10 ${
-                activeTab === "academic" ? "left-0 w-1/2" : "left-1/2 w-1/2"
-              }`}
-              style={{
-                width: activeTab === "academic" ? "50%" : "50%",
-                left: activeTab === "academic" ? "0%" : "50%",
-              }}
-            />
           </div>
         </div>
-        <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+        <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-slate-200 before:to-transparent">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              variants={StaggerContainer}
+              initial="hidden"
+              animate="show"
+              exit={{ opacity: 0 }}
               className="space-y-8"
             >
               {data.map((item, index) => (
                 <TimelineItem
-                  key={index}
+                  key={item.id}
                   role={item.role}
                   org={item.org}
                   date={item.date}
@@ -138,7 +147,7 @@ interface TimelineItemProps {
   desc: string;
   tags: string[];
   icon: React.ReactNode;
-  variant: any;
+  variant: Variants;
 }
 
 const TimelineItem = ({
@@ -155,12 +164,10 @@ const TimelineItem = ({
     variants={variant}
     className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
   >
-    {/* Icon Dot */}
     <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-slate-100 group-hover:bg-slate-900 group-hover:text-white text-slate-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors duration-300">
       {icon}
     </div>
 
-    {/* Content Card */}
     <motion.div
       whileHover={{ y: -5, boxShadow: "0 8px 20px rgba(0,0,0,0.08)" }}
       transition={{ type: "spring", stiffness: 300 }}

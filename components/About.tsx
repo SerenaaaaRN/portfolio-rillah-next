@@ -4,7 +4,7 @@ import { SectionTitle } from "./ui/SectionTitle";
 import { MapPin, GraduationCap, Mail, User } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { StaggerContainer, FadeUp, FadeRight, FadeLeft, subtleFadeUp } from "@/lib/variants";
+import { StaggerContainer, FadeUp, FadeRight, subtleFadeUp } from "@/lib/variants";
 
 export const About: React.FC = () => {
   return (
