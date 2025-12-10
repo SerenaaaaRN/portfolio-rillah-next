@@ -1,55 +1,33 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { ArrowRight, Mail, Github, Linkedin, Instagram } from "lucide-react";
 import { Button, Badge } from "./ui/Primitives";
 import Image from "next/image";
 import { AOSProps } from "./ui/AOSProps";
+import Typed from "typed.js";
 
 export const Hero: React.FC<AOSProps> = ({}) => {
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const el = useRef(null);
 
   useEffect(() => {
-    const roles = [
-      "Machine Learning Entusiast",
-      "Informatics Student",
-      "Math Entusiast",
-    ];
+    const typed = new Typed(el.current, {
+      strings: [
+        "Machine Learning Enthusiast",
+        "Informatics Student",
+        "Math Enthusiast",
+      ],
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
 
-    const handleTyping = () => {
-      const i = loopNum % roles.length;
-      const fullText = roles[i];
-
-      setText((current) =>
-        isDeleting
-          ? fullText.substring(0, current.length - 1)
-          : fullText.substring(0, current.length + 1)
-      );
-
-      // Determine speed based on action
-      let nextSpeed = isDeleting ? 50 : 100;
-
-      // Logic for state switching
-      if (!isDeleting && text === fullText) {
-        // Finished typing, pause before deleting
-        nextSpeed = 2000;
-        setIsDeleting(true);
-      } else if (isDeleting && text === "") {
-        // Finished deleting, move to next word
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-        nextSpeed = 500;
-      }
-
-      setTypingSpeed(nextSpeed);
+    return () => {
+      typed.destroy();
     };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed]);
+  }, []);
 
   return (
     <section
@@ -79,10 +57,7 @@ export const Hero: React.FC<AOSProps> = ({}) => {
             >
               Hi, I&apos;m Rillah <br />
               <span className="text-3xl md:text-4xl text-slate-500/90 h-[1.2em] inline-block">
-                {text}
-                <span className="animate-pulse font-light text-slate-400 ml-1">
-                  |
-                </span>
+                <span ref={el} />
               </span>
             </h1>
             <p
