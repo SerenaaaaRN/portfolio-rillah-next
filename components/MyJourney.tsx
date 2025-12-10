@@ -4,11 +4,11 @@ import { GraduationCap, Calendar, Briefcase } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
+
   FadeLeft,
   FadeRight,
   FadeDownRight,
   StaggerContainer,
-  FadeUp,
 } from "@/lib/variants";
 
 const academicData = [
@@ -49,17 +49,20 @@ export const MyJourney: React.FC = () => {
   const data = activeTab === "academic" ? academicData : experienceData;
 
   return (
-    <motion.section id="myjourney" className="scroll-mt-32">
+    <motion.section
+      id="myjourney"
+      variants={StaggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="scroll-mt-32"
+    >
       <SectionTitle
         title="My Journey"
         subtitle="A timeline of my academic and professional milestones"
       />
 
-      <motion.div
-        variants={FadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.1 }}
+      <div
         className="max-w-4xl mx-auto"
       >
         <div className="flex justify-center mb-10">
@@ -75,6 +78,7 @@ export const MyJourney: React.FC = () => {
             >
               {activeTab === "academic" && (
                 <motion.div
+                variants={FadeRight}
                   layoutId="activeJourneyTab"
                   transition={{ type: "spring", stiffness: 200, damping: 25 }}
                   className="absolute inset-0 bg-white rounded-full shadow-md"
@@ -135,7 +139,7 @@ export const MyJourney: React.FC = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-      </motion.div>
+      </div>
     </motion.section>
   );
 };

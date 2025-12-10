@@ -85,7 +85,7 @@ export const Skills: React.FC = () => {
   return (
     <motion.section
       id="skills"
-      variants={StaggerContainer}
+      variants={FadeUp}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
@@ -96,7 +96,7 @@ export const Skills: React.FC = () => {
         subtitle="A showcase of my technical skills and professional certifications"
       />
 
-      <motion.div variants={FadeUp} className="flex justify-center mb-10">
+      <div className="flex justify-center mb-10">
         <div
           role="tablist"
           className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative"
@@ -136,7 +136,7 @@ export const Skills: React.FC = () => {
             </span>
           </button>
         </div>
-      </motion.div>
+      </div>
 
       <div className="max-w-4xl mx-auto">
         <AnimatePresence mode="wait">

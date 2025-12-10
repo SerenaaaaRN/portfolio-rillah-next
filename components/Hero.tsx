@@ -9,7 +9,6 @@ import {
   StaggerContainer,
   FadeUp,
   FadeRight,
-  ZoomIn,
   FadeDownRight,
   ZoomInLeft,
 } from "@/lib/variants";
