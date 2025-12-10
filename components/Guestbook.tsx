@@ -6,7 +6,7 @@ import { Card } from "./ui/Card";
 import { useFormStatus } from "react-dom";
 import { Send, LoaderCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { StaggerContainer, FadeUp } from "@/lib/variants";
+import { StaggerContainer, subtleFadeUp, ZoomInUp } from "@/lib/variants";
 
 // Define the shape of a review
 interface Review {
@@ -59,7 +59,7 @@ export const Guestbook: React.FC<{
       />
 
       <motion.div
-        variants={FadeUp}
+        variants={subtleFadeUp}
         className="max-w-4xl mx-auto"
       >
         <Card className="p-8">
@@ -72,7 +72,7 @@ export const Guestbook: React.FC<{
             className="flex flex-col gap-4"
           >
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1">
+              <motion.div variants={subtleFadeUp} className="flex-1">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-slate-700 mb-1"
@@ -87,9 +87,9 @@ export const Guestbook: React.FC<{
                   required
                   className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                 />
-              </div>
+              </motion.div>
             </div>
-            <div>
+            <motion.div variants={subtleFadeUp}>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-slate-700 mb-1"
@@ -104,51 +104,58 @@ export const Guestbook: React.FC<{
                 required
                 className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               ></textarea>
-            </div>
+            </motion.div>
 
-            <div className="flex justify-end items-center">
+            <motion.div variants={subtleFadeUp} className="flex justify-end items-center">
               <SubmitButton />
-            </div>
+            </motion.div>
           </form>
         </Card>
 
         <motion.div
           variants={StaggerContainer}
-          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="mt-12"
         >
-          <h3 className="text-2xl font-bold text-slate-900 text-center col-span-full">
+          <motion.h3 variants={subtleFadeUp} className="text-2xl font-bold text-slate-900 text-center mb-8">
             Recent Reviews
-          </h3>
+          </motion.h3>
           {error ? (
             <p className="text-red-500 text-center col-span-full">
               Error loading reviews. Please try again later.
             </p>
           ) : (
-            initialReviews.map((review) => (
-              <motion.div
-                key={review.id}
-                variants={FadeUp}
-              >
-                <Card className="p-6 h-full">
-                  <div className="flex items-start">
-                    <div className="shrink-0 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
-                      <span className="text-lg font-bold text-slate-500">
-                        {review.name.charAt(0).toUpperCase()}
-                      </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {initialReviews.map((review, i) => (
+                <motion.div
+                  key={review.id}
+                  variants={ZoomInUp}
+                  custom={i}
+                >
+                  <motion.div
+                    whileHover={{ y: -5, boxShadow: "0 8px 25px rgba(0,0,0,0.08)" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="p-6 h-full bg-white rounded-2xl border border-slate-100 shadow-sm"
+                  >
+                    <div className="flex items-start">
+                      <div className="shrink-0 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
+                        <span className="text-lg font-bold text-slate-500">
+                          {review.name.charAt(0).toUpperCase()}
+                        </span>
+                      </div>
+                      <div className="ml-4">
+                        <p className="font-bold text-slate-800">
+                          {review.name}
+                        </p>
+                        <p className="text-slate-600 mt-1">{review.message}</p>
+                        <p className="text-xs text-slate-400 mt-2">
+                          {new Date(review.created_at).toLocaleString()}
+                        </p>
+                      </div>
                     </div>
-                    <div className="ml-4">
-                      <p className="font-bold text-slate-800">
-                        {review.name}
-                      </p>
-                      <p className="text-slate-600 mt-1">{review.message}</p>
-                      <p className="text-xs text-slate-400 mt-2">
-                        {new Date(review.created_at).toLocaleString()}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
           )}
         </motion.div>
       </motion.div>
