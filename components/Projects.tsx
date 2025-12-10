@@ -6,7 +6,7 @@ import { Button } from "./ui/Button";
 import { Github, ExternalLink, Folder } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { StaggerContainer, subtleFadeUp, ZoomInUp } from "@/lib/variants";
+import { StaggerContainer, ZoomInUp } from "@/lib/variants";
 
 export const Projects: React.FC = () => {
   const projects = [
@@ -122,7 +122,7 @@ export const Projects: React.FC = () => {
       </motion.div>
 
       <motion.div
-        variants={subtleFadeUp}
+        variants={StaggerContainer}
         className="text-center mt-12"
       >
         <Button variant="ghost" className="text-slate-500 hover:text-slate-900 transition-colors">

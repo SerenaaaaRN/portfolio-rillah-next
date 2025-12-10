@@ -6,7 +6,7 @@ import { Card } from "./ui/Card";
 import { useFormStatus } from "react-dom";
 import { Send, LoaderCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import { StaggerContainer, subtleFadeUp, ZoomInUp } from "@/lib/variants";
+import { StaggerContainer, ZoomInUp } from "@/lib/variants";
 
 // Define the shape of a review
 interface Review {
@@ -59,7 +59,7 @@ export const Guestbook: React.FC<{
       />
 
       <motion.div
-        variants={subtleFadeUp}
+        variants={StaggerContainer}
         className="max-w-4xl mx-auto"
       >
         <Card className="p-8">
@@ -72,7 +72,7 @@ export const Guestbook: React.FC<{
             className="flex flex-col gap-4"
           >
             <div className="flex flex-col sm:flex-row gap-4">
-              <motion.div variants={subtleFadeUp} className="flex-1">
+              <motion.div variants={StaggerContainer} className="flex-1">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-slate-700 mb-1"
@@ -89,7 +89,7 @@ export const Guestbook: React.FC<{
                 />
               </motion.div>
             </div>
-            <motion.div variants={subtleFadeUp}>
+            <motion.div variants={StaggerContainer}>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-slate-700 mb-1"
@@ -106,7 +106,7 @@ export const Guestbook: React.FC<{
               ></textarea>
             </motion.div>
 
-            <motion.div variants={subtleFadeUp} className="flex justify-end items-center">
+            <motion.div variants={StaggerContainer} className="flex justify-end items-center">
               <SubmitButton />
             </motion.div>
           </form>
@@ -116,7 +116,7 @@ export const Guestbook: React.FC<{
           variants={StaggerContainer}
           className="mt-12"
         >
-          <motion.h3 variants={subtleFadeUp} className="text-2xl font-bold text-slate-900 text-center mb-8">
+          <motion.h3 variants={StaggerContainer} className="text-2xl font-bold text-slate-900 text-center mb-8">
             Recent Reviews
           </motion.h3>
           {error ? (

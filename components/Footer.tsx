@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { StaggerContainer, subtleFadeUp } from "@/lib/variants";
+import { FadeLeft, FadeRight, StaggerContainer } from "@/lib/variants";
 import { Github, Linkedin, Instagram } from "lucide-react";
 
 export const Footer: React.FC = () => {
@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
       className="bg-white/50 backdrop-blur-sm border-t border-slate-100 py-12 mt-20"
     >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        <motion.div variants={subtleFadeUp} className="space-y-2">
+        <motion.div variants={FadeRight} className="space-y-2">
           <h3 className="font-bold text-slate-900 text-lg">Rillah</h3>
           <p className="text-slate-500 text-sm">
             Still Learning
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
         </motion.div>
 
         <motion.div
-          variants={subtleFadeUp}
+          variants={FadeRight}
           className="flex flex-col items-center md:items-start gap-3 text-sm text-slate-600 font-medium"
         >
           <h4 className="font-semibold text-slate-800">Quick Links</h4>
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
         </motion.div>
 
         <motion.div
-          variants={subtleFadeUp}
+          variants={FadeLeft}
           className="flex flex-col items-center md:items-end gap-4"
         >
           <div className="flex items-center gap-4">

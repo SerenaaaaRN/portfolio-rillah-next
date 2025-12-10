@@ -1,124 +1,193 @@
 import { Transition, Variants } from "framer-motion";
 
-const defaultTransition: Transition = {
+const aosTransition: Transition = {
   type: "spring",
-  stiffness: 100,
+  stiffness: 60,
   damping: 20,
   mass: 1,
 };
 
-export const slowTransition: Transition = {
-  type: "spring",
-  stiffness: 80,
-  damping: 30,
-  mass: 1.2,
-};
-
-export const StaggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+const flipTransition: Transition = {
+  duration: 0.6,
+  ease: "easeOut",
 };
 
 export const FadeUp: Variants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 100 },
   show: {
     opacity: 1,
     y: 0,
-    transition: defaultTransition,
-  },
-};
-
-export const subtleFadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ...defaultTransition,
-      duration: 0.8,
-    },
-  },
-};
-
-export const ZoomIn: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: defaultTransition,
-  },
-};
-
-export const FadeIn: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: defaultTransition,
-  },
-};
-
-export const FadeRight: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: defaultTransition,
-  },
-};
-
-export const FadeLeft: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: defaultTransition,
+    transition: aosTransition,
   },
 };
 
 export const FadeDown: Variants = {
-  hidden: { opacity: 0, y: -50 },
+  hidden: { opacity: 0, y: -100 },
   show: {
     opacity: 1,
     y: 0,
-    transition: defaultTransition,
+    transition: aosTransition,
+  },
+};
+
+export const FadeRight: Variants = {
+  hidden: { opacity: 0, x: -100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: aosTransition,
+  },
+};
+
+export const FadeLeft: Variants = {
+  hidden: { opacity: 0, x: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: aosTransition,
+  },
+};
+
+export const FadeUpRight: Variants = {
+  hidden: { opacity: 0, x: -100, y: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: aosTransition,
+  },
+};
+
+export const FadeUpLeft: Variants = {
+  hidden: { opacity: 0, x: 100, y: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: aosTransition,
   },
 };
 
 export const FadeDownRight: Variants = {
-  hidden: { opacity: 0, x: -50, y: -50 },
+  hidden: { opacity: 0, x: -150, y: -150 },
   show: {
     opacity: 1,
     x: 0,
     y: 0,
-    transition: slowTransition,
+    transition: aosTransition,
   },
 };
 
-export const ZoomInLeft: Variants = {
-  hidden: { opacity: 0, x: 100, y: 100, scale: 0.8 },
+export const FadeDownLeft: Variants = {
+  hidden: { opacity: 0, x: 100, y: -100 },
   show: {
     opacity: 1,
     x: 0,
     y: 0,
+    transition: aosTransition,
+  },
+};
+
+
+export const ZoomIn: Variants = {
+  hidden: { opacity: 0, scale: 0.5 },
+  show: {
+    opacity: 1,
     scale: 1,
-    transition: slowTransition,
+    transition: aosTransition,
+  },
+};
+
+export const ZoomOut: Variants = {
+  hidden: { opacity: 0, scale: 1.5 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: aosTransition,
   },
 };
 
 export const ZoomInUp: Variants = {
-  hidden: { opacity: 0, y: 50, scale: 0.8 },
-  show: (i = 0) => ({
+  hidden: { opacity: 0, y: 100, scale: 0.5 },
+  show: {
     opacity: 1,
     y: 0,
     scale: 1,
+    transition: aosTransition,
+  },
+};
+
+export const ZoomInLeft: Variants = {
+  hidden: { opacity: 0, x: 100, scale: 0.5 },
+  show: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: aosTransition,
+  },
+};
+
+export const FlipLeft: Variants = {
+  hidden: { opacity: 0, rotateY: -90 },
+  show: {
+    opacity: 1,
+    rotateY: 0,
+    transition: flipTransition,
+  },
+};
+
+export const FlipRight: Variants = {
+  hidden: { opacity: 0, rotateY: 90 },
+  show: {
+    opacity: 1,
+    rotateY: 0,
+    transition: flipTransition,
+  },
+};
+
+export const FlipUp: Variants = {
+  hidden: { opacity: 0, rotateX: -90 },
+  show: {
+    opacity: 1,
+    rotateX: 0,
+    transition: flipTransition,
+  },
+};
+
+export const FlipDown: Variants = {
+  hidden: { opacity: 0, rotateX: 90 },
+  show: {
+    opacity: 1,
+    rotateX: 0,
+    transition: flipTransition,
+  },
+};
+
+
+
+export const SlideUp: Variants = {
+  hidden: { y: 100 },
+  show: {
+    y: 0,
+    transition: aosTransition,
+  },
+};
+
+export const SlideRight: Variants = {
+  hidden: { x: -100 },
+  show: {
+    x: 0,
+    transition: aosTransition,
+  },
+};
+
+
+export const StaggerContainer: Variants = {
+  hidden: {},
+  show: {
     transition: {
-      ...defaultTransition,
-      delay: i * 0.1,
+      staggerChildren: 0.1, 
+      delayChildren: 0.2,
     },
-  }),
+  },
 };

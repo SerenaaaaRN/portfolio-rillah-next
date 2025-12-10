@@ -4,7 +4,7 @@ import { SectionTitle } from "./ui/SectionTitle";
 import { MapPin, GraduationCap, Mail, User } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { StaggerContainer, FadeUp, FadeRight, subtleFadeUp } from "@/lib/variants";
+import { StaggerContainer, FadeUp, FadeRight, FadeLeft } from "@/lib/variants";
 
 export const About: React.FC = () => {
   return (
@@ -45,7 +45,7 @@ export const About: React.FC = () => {
           variants={StaggerContainer}
           className="lg:col-span-7 space-y-6"
         >
-          <motion.div variants={subtleFadeUp} className="prose prose-slate max-w-none text-slate-600">
+          <motion.div variants={FadeLeft} className="prose prose-slate max-w-none text-slate-600">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
               Hello There!
             </h3>
@@ -91,7 +91,7 @@ export const About: React.FC = () => {
             /></motion.div>
           </motion.div>
 
-          <motion.div variants={subtleFadeUp} className="pt-2">
+          <motion.div variants={FadeUp} className="pt-2">
             <h4 className="font-semibold text-slate-900 mb-3">
               Interests & Focus
             </h4>

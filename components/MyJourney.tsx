@@ -4,10 +4,11 @@ import { GraduationCap, Calendar, Briefcase } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
-  StaggerContainer,
-  subtleFadeUp,
   FadeLeft,
   FadeRight,
+  FadeDownRight,
+  StaggerContainer,
+  FadeUp,
 } from "@/lib/variants";
 
 const academicData = [
@@ -55,7 +56,7 @@ export const MyJourney: React.FC = () => {
       />
 
       <motion.div
-        variants={subtleFadeUp}
+        variants={FadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}

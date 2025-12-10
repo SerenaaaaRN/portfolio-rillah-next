@@ -9,8 +9,9 @@ import {
   StaggerContainer,
   FadeUp,
   FadeRight,
-  subtleFadeUp,
   ZoomIn,
+  FadeDownRight,
+  ZoomInLeft,
 } from "@/lib/variants";
 
 export const Hero: React.FC = () => {
@@ -42,17 +43,13 @@ export const Hero: React.FC = () => {
       variants={StaggerContainer}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="min-h-screen flex items-center justify-center pt-20 relative"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Text Content */}
-        <motion.div
-          variants={StaggerContainer}
-          className="lg:col-span-7 space-y-6 order-2 lg:order-1 text-center lg:text-left"
-        >
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+        <div className="lg:col-span-7 space-y-6 order-2 lg:order-1 text-center lg:text-left">
           <motion.div
-            variants={subtleFadeUp}
+            variants={FadeDownRight}
             className="flex justify-center lg:justify-start"
           >
             <Badge variant="success" className="shadow-sm">
@@ -63,7 +60,7 @@ export const Hero: React.FC = () => {
 
           <div className="space-y-3">
             <motion.h1
-              variants={subtleFadeUp}
+              variants={FadeDownRight}
               className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight"
             >
               Hi, I&apos;m Rillah <br />
@@ -71,8 +68,9 @@ export const Hero: React.FC = () => {
                 <span ref={el} />
               </span>
             </motion.h1>
+
             <motion.p
-              variants={subtleFadeUp}
+              variants={FadeRight}
               className="text-lg md:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
               A first-year Informatics student at Sriwijaya University. I am
@@ -120,39 +118,45 @@ export const Hero: React.FC = () => {
             <span className="text-sm font-medium">Follow me:</span>
             <a
               href="https://www.linkedin.com/in/duhairillah-690679281/"
+              target="_blank"
               className="hover:text-slate-900 transition-colors"
             >
               <Linkedin size={20} />
             </a>
             <a
               href="https://github.com/SerenaaaaRN"
+              target="_blank"
               className="hover:text-slate-900 transition-colors"
             >
               <Github size={20} />
             </a>
             <a
               href="https://www.instagram.com/__rillah?igsh=MWhvN21haXljNjFmNQ=="
+              target="_blank"
               className="hover:text-slate-900 transition-colors"
             >
               <Instagram size={20} />
             </a>
           </motion.div>
-        </motion.div>
+        </div>
 
-        {/* Hero Image */}
         <motion.div
-          variants={ZoomIn}
+          variants={ZoomInLeft}
           className="lg:col-span-5 order-1 lg:order-2 flex justify-center"
         >
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
+          <motion.div
+            className="relative w-72 h-72 md:w-96 md:h-96 cursor-pointer"
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
             <motion.div
-              whileHover={{ rotate: 3, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2.5rem] rotate-6 transform border border-white/50 shadow-lg"
+              variants={ZoomInLeft}
+              className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2.5rem] border border-white/50 shadow-lg"
             ></motion.div>
+
             <motion.div
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              variants={ZoomInLeft}
               className="relative w-full h-full"
             >
               <Image
@@ -164,7 +168,7 @@ export const Hero: React.FC = () => {
                 priority
               />
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>

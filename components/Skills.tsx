@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { X, Code, Award, Maximize } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
 import { motion, AnimatePresence } from "framer-motion";
-import { StaggerContainer, subtleFadeUp, ZoomInUp } from "@/lib/variants";
+import { FadeUp, StaggerContainer, ZoomInUp } from "@/lib/variants";
 
 type TabType = "tech" | "certs";
 
@@ -96,7 +96,7 @@ export const Skills: React.FC = () => {
         subtitle="A showcase of my technical skills and professional certifications"
       />
 
-      <motion.div variants={subtleFadeUp} className="flex justify-center mb-10">
+      <motion.div variants={FadeUp} className="flex justify-center mb-10">
         <div
           role="tablist"
           className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative"
