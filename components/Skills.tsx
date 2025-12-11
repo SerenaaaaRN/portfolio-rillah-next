@@ -15,8 +15,9 @@ const skills = [
   { id: "sympy", name: "Sympy", logoSrc: "/logo/sympy.svg" },
   { id: "java", name: "Java", logoSrc: "/logo/java.svg" },
   { id: "javascript", name: "JavaScript", logoSrc: "/logo/javascript.svg" },
-  { id: "dart", name: "Dart", logoSrc: "/logo/dart.svg" },
   { id: "typescript", name: "Typescript", logoSrc: "/logo/typescript.svg" },
+  { id: "reactjs", name: "React JS", logoSrc: "/logo/reactjs.svg" },
+  { id: "dart", name: "Dart", logoSrc: "/logo/dart.svg" },
   { id: "tailwindcss", name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg" },
   { id: "c++", name: "C++", logoSrc: "/logo/c++.svg" },
   { id: "github", name: "GitHub", logoSrc: "/logo/github.svg" },
@@ -44,16 +45,6 @@ const certificates = [
     imageUrl: "",
   },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },

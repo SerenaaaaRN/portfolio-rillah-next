@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { GraduationCap, Calendar, Briefcase } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { StaggerContainer, FadeInLeft, FadeInRight, FadeRight, FadeLeft } from "@/lib/variants";
+import { StaggerContainer, FadeRight, FadeLeft } from "@/lib/variants";
 
 const academicData = [
   {
