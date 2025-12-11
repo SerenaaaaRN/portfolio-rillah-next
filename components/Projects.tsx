@@ -25,7 +25,6 @@ export const Projects: React.FC = () => {
       link: "https://kalkulusproject.vercel.app/",
       github: "https://github.com/SerenaaaaRN/kalkulus-project-1",
     },
-    // More projects can be added here
   ];
 
   return (
