@@ -27,15 +27,15 @@ export const About: React.FC = () => {
           className="lg:col-span-5"
         >
           <motion.div 
-            whileHover={{ scale: 1.05, y: -5 }}
+            whileHover={{ scale: 1.02, y: -2 }}
             transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-            className="relative overflow-hidden rounded-2xl shadow-soft"
+            className="relative overflow-hidden rounded-2xl shadow-soft max-w-sm"
           >
             <Image
               src="/assets/rillahme.jpg"
               alt="Working"
-              width={500}
-              height={500}
+              width={1100}
+              height={1100}
               className="w-full h-auto object-cover"
             />
           </motion.div>
