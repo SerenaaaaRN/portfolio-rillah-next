@@ -50,7 +50,7 @@ export const Guestbook: React.FC<{
       variants={StaggerContainer}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once:true, amount: 0.1 }}
       className="scroll-mt-32"
     >
       <SectionTitle

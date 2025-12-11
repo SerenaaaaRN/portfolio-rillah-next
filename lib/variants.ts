@@ -163,8 +163,6 @@ export const FlipDown: Variants = {
   },
 };
 
-
-
 export const SlideUp: Variants = {
   hidden: { y: 100 },
   show: {
@@ -191,4 +189,13 @@ export const StaggerContainer: Variants = {
     },
   },
 };
-  
+
+export const FadeInLeft: Variants = {
+  hidden: { opacity: 0, x: -100 },
+  show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100, delay: 0.2 } },
+};
+
+export const FadeInRight: Variants = {
+  hidden: { opacity: 0, x: 100 }, 
+  show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 , delay: 0.2} },
+};

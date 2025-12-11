@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { X, Code, Award, Maximize } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
 import { motion, AnimatePresence } from "framer-motion";
-import { FadeUp, StaggerContainer, ZoomInUp } from "@/lib/variants";
+import { StaggerContainer } from "@/lib/variants";
 
 type TabType = "tech" | "certs";
 
@@ -45,6 +45,21 @@ const certificates = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
 export const Skills: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("tech");
   const [selectedCert, setSelectedCert] = useState<string | null>(null);
@@ -83,14 +98,7 @@ export const Skills: React.FC = () => {
   }, []);
 
   return (
-    <motion.section
-      id="skills"
-      variants={FadeUp}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
-      className="scroll-mt-32"
-    >
+    <section id="skills" className="scroll-mt-32">
       <SectionTitle
         title="Skills & Certificates"
         subtitle="A showcase of my technical skills and professional certifications"
@@ -144,7 +152,8 @@ export const Skills: React.FC = () => {
             key={activeTab}
             variants={StaggerContainer}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
             exit="hidden"
             className={`grid ${
               activeTab === "tech"
@@ -153,13 +162,13 @@ export const Skills: React.FC = () => {
             } gap-6`}
           >
             {activeTab === "tech"
-              ? skills.map((skill, i) => (
-                  <motion.div key={skill.id} variants={ZoomInUp} custom={i}>
+              ? skills.map((skill) => (
+                  <motion.div key={skill.id} variants={itemVariants}>
                     <SkillCard name={skill.name} logoSrc={skill.logoSrc} />
                   </motion.div>
                 ))
-              : certificates.map((cert, i) => (
-                  <motion.div key={cert.id} variants={ZoomInUp} custom={i}>
+              : certificates.map((cert) => (
+                  <motion.div key={cert.id} variants={itemVariants}>
                     <CertificateCard
                       title={cert.title}
                       issuer={cert.issuer}
@@ -177,7 +186,7 @@ export const Skills: React.FC = () => {
           <CertificateModal imageUrl={selectedCert} onClose={closeModal} />
         )}
       </AnimatePresence>
-    </motion.section>
+    </section>
   );
 };
 

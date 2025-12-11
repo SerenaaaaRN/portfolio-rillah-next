@@ -3,13 +3,7 @@ import React, { useState } from "react";
 import { GraduationCap, Calendar, Briefcase } from "lucide-react";
 import { SectionTitle } from "./ui/SectionTitle";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import {
-
-  FadeLeft,
-  FadeRight,
-  FadeDownRight,
-  StaggerContainer,
-} from "@/lib/variants";
+import { StaggerContainer, FadeInLeft, FadeInRight, FadeRight, FadeLeft } from "@/lib/variants";
 
 const academicData = [
   {
@@ -19,7 +13,7 @@ const academicData = [
     date: "2025 - Sekarang",
     location: "Indralaya, Sumatra Selatan",
     desc: "Mahasiswa tingkat pertama dengan minat kuat pada Software Engineering dan Artificial Intelligence. Saat ini aktif membangun fondasi dalam algoritma pemrograman dan matematika komputasi.",
-    tags: ["Algotitma Strukur Data", "Kalkulus", "Matriks dan Vektor"],
+    tags: ["Algoritma Struktur Data", "Kalkulus", "Matriks dan Vektor"],
   },
   {
     id: "edu2",
@@ -49,22 +43,13 @@ export const MyJourney: React.FC = () => {
   const data = activeTab === "academic" ? academicData : experienceData;
 
   return (
-    <motion.section
-      id="myjourney"
-      variants={StaggerContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      className="scroll-mt-32"
-    >
+    <section id="myjourney" className="scroll-mt-32">
       <SectionTitle
         title="My Journey"
         subtitle="A timeline of my academic and professional milestones"
       />
 
-      <div
-        className="max-w-4xl mx-auto"
-      >
+      <div className="max-w-4xl mx-auto">
         <div className="flex justify-center mb-10">
           <div
             role="tablist"
@@ -78,7 +63,6 @@ export const MyJourney: React.FC = () => {
             >
               {activeTab === "academic" && (
                 <motion.div
-                variants={FadeRight}
                   layoutId="activeJourneyTab"
                   transition={{ type: "spring", stiffness: 200, damping: 25 }}
                   className="absolute inset-0 bg-white rounded-full shadow-md"
@@ -107,40 +91,47 @@ export const MyJourney: React.FC = () => {
             </button>
           </div>
         </div>
+
         <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-slate-200 before:to-transparent">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
               variants={StaggerContainer}
               initial="hidden"
-              animate="show"
-              exit={{ opacity: 0 }}
+              whileInView="show"
+              viewport={{ amount: 0.1 }}
+              exit="hidden"
               className="space-y-8"
             >
-              {data.map((item, index) => (
-                <TimelineItem
-                  key={item.id}
-                  role={item.role}
-                  org={item.org}
-                  date={item.date}
-                  location={item.location}
-                  desc={item.desc}
-                  tags={item.tags}
-                  icon={
-                    activeTab === "academic" ? (
-                      <GraduationCap size={18} />
-                    ) : (
-                      <Briefcase size={18} />
-                    )
-                  }
-                  variant={index % 2 === 0 ? FadeLeft : FadeRight}
-                />
-              ))}
+              {data.map((item, index) => {
+                const isEven = index % 2 === 0;
+                const animVariant = isEven ? FadeLeft : FadeRight;
+
+                return (
+                  <TimelineItem
+                    key={item.id}
+                    role={item.role}
+                    org={item.org}
+                    date={item.date}
+                    location={item.location}
+                    desc={item.desc}
+                    tags={item.tags}
+                    icon={
+                      activeTab === "academic" ? (
+                        <GraduationCap size={18} />
+                      ) : (
+                        <Briefcase size={18} />
+                      )
+                    }
+                    variant={animVariant}
+                  />
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
