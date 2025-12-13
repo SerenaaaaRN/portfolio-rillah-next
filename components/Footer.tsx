@@ -31,12 +31,12 @@ export const Footer: React.FC = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
-      className="bg-white/50 backdrop-blur-sm border-t border-slate-100 py-12 mt-20"
+      className="bg-slate-900 backdrop-blur-sm border-t border-slate-100 py-12 mt-20"
     >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         <motion.div variants={FadeRight} className="space-y-2">
-          <h3 className="font-bold text-slate-900 text-lg">Rillah</h3>
-          <p className="text-slate-500 text-sm">
+          <h3 className="font-bold text-slate-100 text-lg">Rillah</h3>
+          <p className="text-slate-400 text-sm">
             Still Learning
           </p>
         </motion.div>
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
           variants={FadeRight}
           className="flex flex-col items-center md:items-start gap-3 text-sm text-slate-600 font-medium"
         >
-          <h4 className="font-semibold text-slate-800">Quick Links</h4>
+          <h4 className="font-semibold text-slate-100">Quick Links</h4>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {footerLinks.map((link) => (
               <a
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
                 href={link.href}
                 whileHover={{ y: -3, scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-slate-500 hover:text-slate-900 transition-colors"
+                className="text-slate-400 hover:text-slate-100 transition-colors"
               >
                 <link.icon size={22} />
               </motion.a>
