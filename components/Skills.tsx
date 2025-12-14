@@ -8,20 +8,54 @@ import { StaggerContainer } from "@/lib/variants";
 
 type TabType = "tech" | "certs";
 
-const skills = [
-  { id: "python", name: "Python", logoSrc: "/logo/python.svg" },
-  { id: "numpy", name: "Numpy", logoSrc: "/logo/numpy.svg" },
-  { id: "pandas", name: "Pandas", logoSrc: "/logo/pandas.svg" },
-  { id: "sympy", name: "Sympy", logoSrc: "/logo/sympy.svg" },
-  { id: "java", name: "Java", logoSrc: "/logo/java.svg" },
-  { id: "javascript", name: "JavaScript", logoSrc: "/logo/javascript.svg" },
-  { id: "typescript", name: "Typescript", logoSrc: "/logo/typescript.svg" },
-  { id: "reactjs", name: "React JS", logoSrc: "/logo/reactjs.svg" },
-  { id: "dart", name: "Dart", logoSrc: "/logo/dart.svg" },
-  { id: "tailwindcss", name: "TailwindCSS", logoSrc: "/logo/tailwindcss.svg" },
-  { id: "c++", name: "C++", logoSrc: "/logo/c++.svg" },
-  { id: "github", name: "GitHub", logoSrc: "/logo/github.svg" },
-  { id: "notion", name: "Notion", logoSrc: "/logo/notion.svg" },
+interface Skill {
+  id: string;
+  name: string;
+  logoSrc: string;
+}
+
+interface SkillCategory {
+  title: string;
+  description?: string;
+  skills: Skill[];
+}
+
+const skillCategories: SkillCategory[] = [
+  {
+    title: "Machine Learning & Data Science",
+    description: "Core expertise in ML and data analysis",
+    skills: [
+      { id: "python", name: "Python", logoSrc: "/logo/python.svg" },
+      { id: "numpy", name: "Numpy", logoSrc: "/logo/numpy.svg" },
+      { id: "pandas", name: "Pandas", logoSrc: "/logo/pandas.svg" },
+      { id: "sympy", name: "Sympy", logoSrc: "/logo/sympy.svg" },
+    ],
+  },
+  {
+    title: "Software Development",
+    description: "Full-stack development capabilities",
+    skills: [
+      { id: "java", name: "Java", logoSrc: "/logo/java.svg" },
+      { id: "javascript", name: "JavaScript", logoSrc: "/logo/javascript.svg" },
+      { id: "typescript", name: "Typescript", logoSrc: "/logo/typescript.svg" },
+      { id: "reactjs", name: "React JS", logoSrc: "/logo/reactjs.svg" },
+      {
+        id: "tailwindcss",
+        name: "TailwindCSS",
+        logoSrc: "/logo/tailwindcss.svg",
+      },
+      { id: "dart", name: "Dart", logoSrc: "/logo/dart.svg" },
+      { id: "c++", name: "C++", logoSrc: "/logo/c++.svg" },
+    ],
+  },
+  {
+    title: "Tools & Others",
+    description: "Development tools and productivity",
+    skills: [
+      { id: "github", name: "GitHub", logoSrc: "/logo/github.svg" },
+      { id: "notion", name: "Notion", logoSrc: "/logo/notion.svg" },
+    ],
+  },
 ];
 
 const certificates = [
@@ -49,6 +83,16 @@ const certificates = [
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
+};
+
+const categoryVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export const Skills: React.FC = () => {
@@ -95,7 +139,7 @@ export const Skills: React.FC = () => {
         subtitle="A showcase of my technical skills and professional certifications"
       />
 
-      <div className="flex justify-center mb-10">
+      <div className="flex justify-center mb-8">
         <div
           role="tablist"
           className="flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-xl sm:rounded-full relative"
@@ -139,36 +183,69 @@ export const Skills: React.FC = () => {
 
       <div className="max-w-4xl mx-auto">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            variants={StaggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            exit="hidden"
-            className={`grid ${
-              activeTab === "tech"
-                ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
-                : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-            } gap-6`}
-          >
-            {activeTab === "tech"
-              ? skills.map((skill) => (
-                  <motion.div key={skill.id} variants={itemVariants}>
-                    <SkillCard name={skill.name} logoSrc={skill.logoSrc} />
+          {activeTab === "tech" ? (
+            <motion.div
+              key="tech"
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              variants={categoryVariants}
+              className="space-y-6"
+            >
+              {skillCategories.map((category, categoryIndex) => (
+                <motion.div
+                  key={category.title}
+                  variants={itemVariants}
+                  className="space-y-5"
+                >
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-bold text-slate-800">
+                      {category.title}
+                    </h3>
+                    {category.description && (
+                      <p className="text-sm text-slate-500">
+                        {category.description}
+                      </p>
+                    )}
+                  </div>
+                  <motion.div
+                    variants={StaggerContainer}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+                  >
+                    {category.skills.map((skill) => (
+                      <motion.div key={skill.id} variants={itemVariants}>
+                        <SkillCard name={skill.name} logoSrc={skill.logoSrc} />
+                      </motion.div>
+                    ))}
                   </motion.div>
-                ))
-              : certificates.map((cert) => (
-                  <motion.div key={cert.id} variants={itemVariants}>
-                    <CertificateCard
-                      title={cert.title}
-                      issuer={cert.issuer}
-                      imageUrl={cert.imageUrl}
-                      onCardClick={() => openModal(cert.imageUrl)}
-                    />
-                  </motion.div>
-                ))}
-          </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="certs"
+              variants={StaggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              exit="hidden"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {certificates.map((cert) => (
+                <motion.div key={cert.id} variants={itemVariants}>
+                  <CertificateCard
+                    title={cert.title}
+                    issuer={cert.issuer}
+                    imageUrl={cert.imageUrl}
+                    onCardClick={() => openModal(cert.imageUrl)}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 

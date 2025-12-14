@@ -39,7 +39,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
-        transition={{ duration: 1.5, delay: 0.5 }}
+        transition={{ duration: 1, delay: 0.3 }}
       >
         <Navbar />
       </motion.div>
@@ -48,7 +48,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-[-10%] w-160 h-160 bg-indigo-100/40 rounded-full mix-blend-multiply blur-3xl opacity-70 animate-blob"></div>
         <div className="absolute top-[20%] left-[-10%] w-140 h-140 bg-blue-100/40 rounded-full mix-blend-multiply blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-[-10%] right-[20%] w-140 h-160 bg-slate-200/50 rounded-full mix-blend-multiply blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute bottom-[-10%] right-[20%] w-140 h-160 bg-slate-200/30 rounded-full mix-blend-multiply blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
         <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]"></div>
       </div>
 
@@ -59,7 +59,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
           <Hero />
         </motion.div>
