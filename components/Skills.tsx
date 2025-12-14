@@ -28,7 +28,12 @@ const skillCategories: SkillCategory[] = [
       { id: "python", name: "Python", logoSrc: "/logo/python.svg" },
       { id: "numpy", name: "Numpy", logoSrc: "/logo/numpy.svg" },
       { id: "pandas", name: "Pandas", logoSrc: "/logo/pandas.svg" },
+      // { id: "matplotlib", name: "Matplotlib", logoSrc: "/logo/matplotlib.svg" },
+      // { id: "seaborn", name: "Seaborn", logoSrc: "/logo/seaborn.svg" },
       { id: "sympy", name: "Sympy", logoSrc: "/logo/sympy.svg" },
+      // { id: "scikit", name: "Scikit Learn", logoSrc: "/logo/scikit.svg" },
+      // { id: "pytorch", name: "PyTorch", logoSrc: "/logo/pytorch.svg" },
+      // { id: "tensor", name: "Tensor Flow", logoSrc: "/logo/tensorflow.svg" },
     ],
   },
   {
@@ -36,14 +41,11 @@ const skillCategories: SkillCategory[] = [
     description: "Full-stack development capabilities",
     skills: [
       { id: "java", name: "Java", logoSrc: "/logo/java.svg" },
-      { id: "javascript", name: "JavaScript", logoSrc: "/logo/javascript.svg" },
+      // { id: "kotlin", name: "Kotlin", logoSrc: "/logo/kotlin.svg"},
+      { id: "javascript", name: "Javascript", logoSrc: "/logo/javascript.svg" },
       { id: "typescript", name: "Typescript", logoSrc: "/logo/typescript.svg" },
       { id: "reactjs", name: "React JS", logoSrc: "/logo/reactjs.svg" },
-      {
-        id: "tailwindcss",
-        name: "TailwindCSS",
-        logoSrc: "/logo/tailwindcss.svg",
-      },
+      { id: "tailwindcss", name: "Tailwind CSS", logoSrc: "/logo/tailwindcss.svg" },
       { id: "dart", name: "Dart", logoSrc: "/logo/dart.svg" },
       { id: "c++", name: "C++", logoSrc: "/logo/c++.svg" },
     ],
@@ -69,7 +71,7 @@ const certificates = [
   {
     id: "cert2",
     title: "Soon",
-    issuer: "Duhairillah",
+    issuer: "",
     imageUrl: "",
   },
   {
