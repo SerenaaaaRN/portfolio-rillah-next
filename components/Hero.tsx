@@ -149,6 +149,8 @@ export const Hero: React.FC = () => {
             whileHover="hover"
             animate="rest"
           >
+            <div className="absolute inset-0 bg-white/30 backdrop-blur-sm rounded-[2.5rem] border border-white/40 shadow-md -rotate-3 translate-x-3 translate-y-3 -z-10"></div>
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-[2.5rem] border border-white/30 shadow-sm rotate-2 translate-x-6 translate-y-5 -z-20"></div>
             <motion.div
               variants={ZoomInLeft}
               className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2.5rem] border border-white/50 shadow-lg"
