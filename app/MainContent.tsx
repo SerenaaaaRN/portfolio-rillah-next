@@ -53,13 +53,13 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
       </div>
 
       {/* MAIN CONTENT */}
-      <main className="max-w-6xl mx-auto px-6 sm:px-8 space-y-24 md:space-y-32 pb-20 relative z-10">
+      <main className="max-w-6xl mx-auto px-6 sm:px-8 space-y-16 md:space-y-16 pb-20 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Hero />
         </motion.div>
@@ -69,7 +69,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <About />
         </motion.div>
@@ -78,7 +78,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <MyJourney />
         </motion.div>
@@ -87,7 +87,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Skills />
         </motion.div>
@@ -96,7 +96,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Projects />
         </motion.div>
@@ -106,7 +106,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
           whileInView="visible"
           variants={sectionVariants}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Guestbook
             initialReviews={reviews || []}
@@ -122,7 +122,7 @@ export const MainContent: React.FC<MainContentProps> = ({ reviews, addReview, er
         whileInView="visible"
         variants={sectionVariants}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
       >
         <Footer />
       </motion.div>
