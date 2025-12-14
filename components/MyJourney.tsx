@@ -19,9 +19,9 @@ const academicData = [
     id: "edu2",
     role: "MAN 1 Palembang",
     org: "",
-    date: "2020 - 2023",
+    date: "2022 - 2025",
     location: "Palembang, Sumatra Selatan",
-    desc: "Lulusan jurusan IPS (Ilmu Pengetahuan Sosial). Memiliki ketertarikan pada Matematika",
+    desc: "Lulusan jurusan IPA (Ilmu Pengetahuan Alam). Memiliki ketertarikan pada Matematika",
     tags: ["Matematika", "Informatika"],
   },
 ];

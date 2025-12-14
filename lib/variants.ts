@@ -5,7 +5,7 @@ const aosTransition: Transition = {
   stiffness: 60,
   damping: 20,
   mass: 1,
-  delay: 0.6,
+  delay: 0.3,
 };
 
 export const FadeUp: Variants = {
