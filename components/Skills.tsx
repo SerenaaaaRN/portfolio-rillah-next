@@ -64,15 +64,15 @@ const certificates = [
   {
     id: "cert1",
     title: "Pelatihan Pemrograman",
-    issuer: "Duhairillah",
+    issuer: "HMIF Unsri",
     imageUrl:
       "/assets/Sertifikat Peserta Pelatihan Pemrograman_DUHAIRILLAH.png",
   },
   {
     id: "cert2",
-    title: "Soon",
-    issuer: "",
-    imageUrl: "",
+    title: "Belajar Dasar AI",
+    issuer: "Dicoding",
+    imageUrl: "/assets/sertifikat_course_ai_dasar.png",
   },
   {
     id: "cert3",
