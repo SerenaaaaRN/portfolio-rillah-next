@@ -53,9 +53,7 @@ export const About: React.FC = () => {
               Saya adalah mahasiswa tahun pertama Teknik Informatika di
               Universitas Sriwijaya yang berminat pada Kecerdasan Buatan.
               Perjalanan saya dimulai dengan rasa ingin tahu tentang bagaimana
-              Matematika bisa diimplementasikan yang membawa saya untuk
-
-              mendalami machine learning.
+              Matematika bisa diimplementasikan yang membawa saya untuk mendalami machine learning.
             </p>
             <p className="leading-relaxed mb-4">
               Saat ini, saya sedang fokus membangun fondasi kuat di bidang
@@ -77,7 +75,7 @@ export const About: React.FC = () => {
             variants={StaggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 gap-4"
           >
-            <motion.div variants={FadeUp}><InfoCard icon={User} label="Name" value="Rillah" /></motion.div>
+            <motion.div variants={FadeUp}><InfoCard icon={User} label="Name" value="Duhairillah" /></motion.div>
             <motion.div variants={FadeUp}><InfoCard icon={MapPin} label="Location" value="Indonesia" /></motion.div>
             <motion.div variants={FadeUp}><InfoCard
               icon={GraduationCap}

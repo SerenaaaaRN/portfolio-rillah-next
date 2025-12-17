@@ -95,21 +95,13 @@ export const Projects: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                  <a href={project.github} className="flex-1">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full text-xs"
-                    >
+                  <a href={project.github} className="flex-1" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="w-full text-xs" >
                       <Github size={14} className="mr-2" /> Code
                     </Button>
                   </a>
-                  <a href={project.link} className="flex-1">
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      className="w-full text-xs"
-                    >
+                  <a href={project.link} className="flex-1" target="_blank" rel="noopener noreferrer">
+                    <Button variant="primary" size="sm" className="w-full text-xs">
                       Live Demo <ExternalLink size={14} className="ml-2" />
                     </Button>
                   </a>
