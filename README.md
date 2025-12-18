@@ -64,6 +64,7 @@ Berikut adalah gambaran singkat struktur folder project ini:
     ├── lib/                # Utilitas dan varian animasi
     └── ...
 
+<<<<<<< HEAD
 
 ## 📫 Kontak Saya
 Jangan ragu untuk menghubungi saya atau terhubung melalui media sosial:
@@ -71,3 +72,15 @@ Jangan ragu untuk menghubungi saya atau terhubung melalui media sosial:
 - 💼 LinkedIn: Duhairillah
 -🐙 GitHub: @SerenaaaaRN
 -📸 Instagram: @\_\_rillah
+=======
+## 📫 Kontak Saya
+
+Jangan ragu untuk menghubungi saya atau terhubung melalui media sosial:
+- 📧 Email: duhairillahred927@gmail.com
+- 💼 LinkedIn: Duhairillah
+- 🐙 GitHub: @SerenaaaaRN
+- 📸 Instagram: @\_\_rillah
+
+
+## Dibuat dengan ❤️ oleh Rillah.
+>>>>>>> 0615d92c739dbeb7d7c1a5c3d17094e7163345d0
