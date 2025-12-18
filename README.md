@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hi, I'm Rillah! 👋
 
-## Getting Started
+Selamat datang di repositori **Personal Portfolio Website** saya.
 
-First, run the development server:
+Project ini dibangun untuk menampilkan perjalanan saya sebagai mahasiswa Informatika di **Universitas Sriwijaya**, serta ketertarikan saya dalam dunia **Machine Learning**, **Matematika**, dan **Software Engineering**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 **Demo:** rillah.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tentang Saya
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Saya adalah mahasiswa Teknik Informatika yang memiliki semangat tinggi untuk menjembatani kesenjangan antara Logika Matematika dan Rekayasa Perangkat Lunak. Saat ini, saya sedang fokus membangun fondasi yang kuat dalam Algoritma dan Data Science.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🎓 **Universitas:** Universitas Sriwijaya
+- 🔭 **Minat:** Machine Learning, Data Science, Web Development
+- 🌱 **Sedang Mempelajari:** Next.js, TypeScript, Exploratory Data Analysis
 
-## Learn More
+## 🛠️ Teknologi yang Digunakan
 
-To learn more about Next.js, take a look at the following resources:
+Website ini dibangun menggunakan teknologi web modern untuk performa yang cepat dan animasi yang halus:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Bahasa:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animasi:** [Framer Motion](https://www.framer.com/motion/) & [Lottie React](https://lottiefiles.com/)
+- **Interaktifitas:** [Typed.js](https://github.com/mattboldt/typed.js/)
+- **Ikon:** [Lucide React](https://lucide.dev/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚡ Cara Menjalankan Project
 
-## Deploy on Vercel
+Jika kamu ingin menjalankan project ini di komputer lokal (local machine), ikuti langkah berikut:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone repositori ini:**
+   ```bash
+   git clone https://github.com/SerenaaaaRN/portfolio-rillah-next.git
+   ```
+2. **Masuk ke direktori project:**
+   ```bash
+   cd portfolio-rillah-next
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   # atau
+   yarn install
+   # atau
+   pnpm install
+   ```
+4. **Jalankan development server:**
+   ```bash
+   npm run dev
+   ```
+5. **Buka http://localhost:3000 di browser kamu untuk melihat hasilnya.**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Struktur Project
+
+Berikut adalah gambaran singkat struktur folder project ini:
+
+    ```bash
+    portfolio-rillah-next/
+    ├── app/                # Halaman dan layout (Next.js App Router)
+    ├── components/         # Komponen UI (Hero, Navbar, dll)
+    │   └── ui/             # Komponen primitif (Button, Card, Badge)
+    ├── public/             # Aset statis (Gambar, Icon, SVG)
+    ├── lib/                # Utilitas dan varian animasi
+    └── ...
+
+## 📫 Kontak Saya
+
+Jangan ragu untuk menghubungi saya atau terhubung melalui media sosial:
+- 📧 Email: duhairillahred927@gmail.com
+- 💼 LinkedIn: Duhairillah
+- 🐙 GitHub: @SerenaaaaRN
+- 📸 Instagram: @\_\_rillah
+
+
+## Dibuat dengan ❤️ oleh Rillah.
